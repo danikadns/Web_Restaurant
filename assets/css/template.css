@@ -1,0 +1,45 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.fondoHeader {
+    background-color: beige;
+    padding: 10px;
+}
+
+footer {
+    position: absolute !important;
+    bottom: 0 !important;
+    color: white !important;
+    width: 100% !important;
+    background: white !important;
+    margin-bottom: -1px !important;
+}
+
+
+.top-bar-margen {
+    margin-top: -33px;
+}
+
+body {
+    background: aliceblue;
+}
+
+.menuOpciones {
+    background: #408686;
+
+}
+
+.menu_opcion {
+    color: white !important;
+}
