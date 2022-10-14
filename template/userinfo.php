@@ -22,11 +22,11 @@
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                 <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
-                <li><a class="dropdown-item" href="#">Configuración</a></li>
+                <li><a class="dropdown-item" href="#" onclick="cargarContenido('view/Configuracion/configView.php')">Configuración</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Cerrar Sessión</a></li>
+                <li><a class="dropdown-item" href="controller/Configuracion/cerrarSesion.php">Cerrar Sessión</a></li>
 
             </ul>
         </div>
