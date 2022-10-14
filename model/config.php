@@ -4,7 +4,7 @@
 
 define("SERVER","127.0.0.1");
 define("USERDB","usuariodb");
-define("PASSDB", "Usu4ri0db*123");
+define("PASSDB", "JmmG.123");
 define("DATABASE", "sistema");
 
 #OTROS PARÁMETROS DE CONFIGURACIÓN
