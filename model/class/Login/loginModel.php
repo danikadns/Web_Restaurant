@@ -15,6 +15,7 @@ class loginModel {
                 FROM
                     users
                 WHERE
+                
                     UPPER(usuario) = UPPER('$user')
                     and password = '$pass'";
 

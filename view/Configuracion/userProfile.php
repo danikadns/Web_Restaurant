@@ -63,7 +63,7 @@ include_once("../../model/functions.php");
                                 </tr>
                                 <tr>
                                     <th scope="row">Correo electronico</th>
-                                    <td colspan="2">mar211433@uvg.edu.gt</td>
+                                    <td colspan="2"><?php echo $_SESSION['email']?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Nombres</th>
@@ -77,11 +77,15 @@ include_once("../../model/functions.php");
                                 </tr>
                                 <tr>
                                     <th scope="row">Numero de Telefono</th>
-                                    <td colspan="2">#</td>
+                                    <td colspan="2"><?php echo $_SESSION['telefono']?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Red Social</th>
-                                    <td colspan="2">#</td>
+                                    <td colspan="2">
+                                        <figure>
+                                        <a target="_blank" href="<?php echo $_SESSION['red_social']?>"><img src="assets/img/logos/facebook.png" alt="Redes sociales" width="40px"></a>
+                                        </figure>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
