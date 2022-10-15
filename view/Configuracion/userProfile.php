@@ -27,27 +27,6 @@ include_once("../../model/functions.php");
                         <label for="id_upd">ID</label>
                     </div>
 
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="nombres_upd" placeholder="aqui va tu nombre">
-                        <label for="nombres_upd">Nombres</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="apellidos_upd" placeholder="aqui va tu apellido">
-                        <label for="apellidos_upd">Apellidos</label>
-                    </div>
-
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="usuario_upd" placeholder="username">
-                        <label for="usuario_upd">Username</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="password_upd" placeholder="aqui va tu clave">
-                        <label for="password_upd">Clave</label>
-                    </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="btnActualizarUsuario">Actualizar Usuario</button>
@@ -67,31 +46,19 @@ include_once("../../model/functions.php");
 
                         <!-- INPUT USUARIO -->
                         <div class="form-outline mb4">
-                            <label class="form-label" for="inUsuario">Usuario:</label>
+                            <label class="form-label" for="nombres">Nombres</label>
                             <input type="text" class="form-control form-control-lg" placeholder="Ingrese su usuario" id="inUsuario" name="inUsuario"/>
                         </div>
 
                         <!-- INPUT PASSWORD -->
                         <div class="form-outline mb4">
-                            <label class="form-label" for="inPassword">Password:</label>
+                            <label class="form-label" for="apellidos">Apellidos</label>
                             <input type="password" class="form-control form-control-lg" placeholder="Ingrese su password" id="inPassword" name="inPassword"/>
                         </div>
 
                         <!-- INPUT USUARIO -->
                         <div class="form-outline mb4">
-                            <label class="form-label" for="inUsuario">Usuario:</label>
-                            <input type="text" class="form-control form-control-lg" placeholder="Ingrese su usuario" id="inUsuario" name="inUsuario"/>
-                        </div>
-
-                        <!-- INPUT PASSWORD -->
-                        <div class="form-outline mb4">
-                            <label class="form-label" for="inPassword">Password:</label>
-                            <input type="password" class="form-control form-control-lg" placeholder="Ingrese su password" id="inPassword" name="inPassword"/>
-                        </div>
-
-                        <!-- INPUT USUARIO -->
-                        <div class="form-outline mb4">
-                            <label class="form-label" for="inUsuario">Usuario:</label>
+                            <label class="form-label" for="usuario">Username</label>
                             <input type="text" class="form-control form-control-lg" placeholder="Ingrese su usuario" id="inUsuario" name="inUsuario"/>
                         </div>
 
@@ -102,7 +69,7 @@ include_once("../../model/functions.php");
                         </div>
 
                         <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="submit" class="btn btn-primary btn-lg">Iniciar Sesión</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Actualizar</button>
 
                         </div>
                     </form>
