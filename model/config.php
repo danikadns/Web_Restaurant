@@ -3,9 +3,9 @@
 #A BASE DE DATOS
 
 define("SERVER","127.0.0.1");
-define("USERDB","usuariodb");
-define("PASSDB", "Usu4ri0db*123");
-define("DATABASE", "sistema");
+define("USERDB","userRestaurant");
+define("PASSDB", "User*Admin123");
+define("DATABASE", "WebRestaurant");
 
 #OTROS PARÁMETROS DE CONFIGURACIÓN
 define("RAIZ_APLICACION", dirname(__FILE__));
