@@ -9,68 +9,92 @@ include_once("../../model/functions.php");
 
 <script src="assets/js/moduloUsuarios.js"></script>
 
-<!-- AQUI INICIA ESTA EL FORMULARIO MODAL PARA AGREGAR USUARIOS -->
-<div class="modal fade" id="formActualizaUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+<div class="card">
+    <div class="container">
+        <div class="row">
 
-                <div class="modal-header">
-                    <h5 class="modal-title" id="formActualizaUsuario">Usuario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+            <!-- Columna izquierda con decripción breve del usuario -->
+            <div class="col-4 pb-2 pt-3">
+                <!-- Sección de tipo targeta con imagen -->
+                <div class="card" style="width: 100%;">
+                    <img id="fotoPerfil" src="assets/img/fotos/user.png" class="card-img-top" alt="Foto_perfil">
 
-                <div class="modal-body">
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="id_upd">
-                        <label for="id_upd">ID</label>
+                    <div class="card-body">
+                        <h4 class="m-t-0 m-b-40 header-title text-center"><b style="font-size: 20px;">
+                                <?php echo $_SESSION['user_nombre']." ".$_SESSION['user_apellido'];
+                    ?></b></h4>
+                        <p class="card-text">Detalles del Usuario</p>
                     </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnActualizarUsuario">Actualizar Usuario</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
                 </div>
 
             </div>
+            <!-- Columna Derecha con decripción completa del usuario -->
+            <div class="col-8 pb-2 pt-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div
+                            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                            <h1 class="h2">PERFIL</h1>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped-columns">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">Dato</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Nombre de Usuario</th>
+                                    <td colspan="2"><?php echo $_SESSION['username'] ?></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Correo electronico</th>
+                                    <td colspan="2">mar211433@uvg.edu.gt</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Nombres</th>
+                                    <td colspan="2"><?php echo $_SESSION['user_nombre'];
+                    ?></b></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Apellidos</th>
+                                    <td colspan="2"><?php echo $_SESSION['user_apellido'];
+                    ?></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Numero de Telefono</th>
+                                    <td colspan="2">#</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Red Social</th>
+                                    <td colspan="2">#</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text" id="inputGroup-sizing-lg">Other Date</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-
-    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                    <form class="form" method="POST" action="controller/Login/loginController.php">
-                        <div class="divider d-flex align-items-center my-4">
-                            <p class="text-center fw-bold mx-2 mb-0">BIENVENIDO</p>
-                        </div>
-
-                        <!-- INPUT USUARIO -->
-                        <div class="form-outline mb4">
-                            <label class="form-label" for="nombres">Nombres</label>
-                            <input type="text" class="form-control form-control-lg" placeholder="Ingrese su usuario" id="inUsuario" name="inUsuario"/>
-                        </div>
-
-                        <!-- INPUT PASSWORD -->
-                        <div class="form-outline mb4">
-                            <label class="form-label" for="apellidos">Apellidos</label>
-                            <input type="password" class="form-control form-control-lg" placeholder="Ingrese su password" id="inPassword" name="inPassword"/>
-                        </div>
-
-                        <!-- INPUT USUARIO -->
-                        <div class="form-outline mb4">
-                            <label class="form-label" for="usuario">Username</label>
-                            <input type="text" class="form-control form-control-lg" placeholder="Ingrese su usuario" id="inUsuario" name="inUsuario"/>
-                        </div>
-
-                        <!-- INPUT PASSWORD -->
-                        <div class="form-outline mb4">
-                            <label class="form-label" for="inPassword">Password:</label>
-                            <input type="password" class="form-control form-control-lg" placeholder="Ingrese su password" id="inPassword" name="inPassword"/>
-                        </div>
-
-                        <div class="text-center text-lg-start mt-4 pt-2">
-                            <button type="submit" class="btn btn-primary btn-lg">Actualizar</button>
-
-                        </div>
-                    </form>
-                </div>
+</div>
+</div>
