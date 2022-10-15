@@ -3,8 +3,8 @@
 
 <header class="p-3 mb-3 border-bottom fondoHeader">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-            <img src="assets/img/logos/logo.png" alt="mdo" width="100" height="90" class="rounded-circle">
+        <a href="#" class="d-flex align-items-center mb-2 mb-lg-3 text-dark text-decoration-none">
+            <img src="assets/img/logos/Logotipo.png" alt="mdo" width="100" height="100" class="rounded-circle">
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">

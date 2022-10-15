@@ -31,7 +31,7 @@ $result = $usrClass->getUsuarios();
                     data-bs-toggle="modal" data-bs-target="#formNuevoUsuario">Nuevo Usuario</button>
             </div>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table ">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -73,7 +73,7 @@ $result = $usrClass->getUsuarios();
                         <?php 
                     }
                     ?>
-
+                        
                     </tbody>
                 </table>
             </div>
