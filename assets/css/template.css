@@ -1,3 +1,13 @@
+.container-fluid {
+    height: max-content;
+    align-items: center;
+}
+
+.footer {
+    align-content: flex-end;
+    align-items: flex-end;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -22,6 +32,7 @@ footer {
     bottom: 0 !important;
     color: white !important;
     width: 100% !important;
+    height: 0px;
     background: white !important;
     margin-bottom: -1px !important;
 }
@@ -33,6 +44,8 @@ footer {
 
 body {
     background: aliceblue;
+    margin: 0;
+    margin-bottom: 40px;
 }
 
 .menuOpciones {
