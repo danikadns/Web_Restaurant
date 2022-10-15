@@ -21,7 +21,7 @@
                 <img src="assets/img/fotos/user.png" width="50" height="50" class="rounded-circle">
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+                <li><a class="dropdown-item" href="#" onclick="cargarContenido('view/Configuracion/userProfile.php')">Mi Perfil</a></li>
                 <li><a class="dropdown-item" href="#" onclick="cargarContenido('view/Configuracion/configView.php')">Configuración</a></li>
                 <li>
                     <hr class="dropdown-divider">
