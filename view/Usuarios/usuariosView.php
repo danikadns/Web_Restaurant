@@ -39,6 +39,8 @@ $result = $usrClass->getUsuarios();
                             <th scope="col">USERNAME</th>
                             <th scope="col">CLAVE</th>
                             <th scope="col">ESTADO</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">TELEFONO</th>
                             <th scope="col">EDITAR</th>
                             <th scope="col">ELIMINAR</th>
                         </tr>
@@ -54,6 +56,8 @@ $result = $usrClass->getUsuarios();
                             <td><?php echo $fila['usuario']; ?></td>
                             <td><?php echo $fila['password']; ?></td>
                             <td><?php echo $fila['estado']; ?></td>
+                            <td><?php echo $fila['email']; ?></td>
+                            <td><?php echo $fila['telefono']; ?></td>
                             <td>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <button class="btn btn-warning me-md-2" id="btnEditarUsuario"
@@ -95,11 +99,11 @@ $result = $usrClass->getUsuarios();
                         <input type="text" class="form-control" id="nombres" placeholder="aqui va tu nombre">
                         <label for="nombres">Nombres</label>
                     </div>
+
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="apellidos" placeholder="aqui va tu apellido">
                         <label for="apellidos">Apellidos</label>
                     </div>
-
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="usuario" placeholder="username">
@@ -109,6 +113,21 @@ $result = $usrClass->getUsuarios();
                     <div class="form-floating mb-3">
                         <input type="password" class="form-control" id="password" placeholder="aqui va tu clave">
                         <label for="password">Clave</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="email" placeholder="aqui va tu email">
+                        <label for="email">Email</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="telefono" placeholder="aqui va tu número de telefono">
+                        <label for="telefono">Teléfono</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="redSocial" placeholder="aqui va tu link de red social">
+                        <label for="redSocial">Red social</label>
                     </div>
 
                 </div>
@@ -159,6 +178,15 @@ $result = $usrClass->getUsuarios();
                         <input type="text" class="form-control" id="password_upd" placeholder="aqui va tu clave">
                         <label for="password_upd">Clave</label>
                     </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="email_upd" placeholder="aqui va tu email">
+                        <label for="email_upd">Email</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="telefono_upd" placeholder="aqui va tu número de telefono">
+                        <label for="telefono_upd">Teléfono</label>
 
                 </div>
                 <div class="modal-footer">

@@ -14,7 +14,9 @@ class usuariosModel {
                         apellidos,                        
                         usuario,
                         password,                                                
-                        estado 
+                        estado,
+                        email,
+                        telefono 
                 FROM users ";
  
         $resultado = mysqli_query($conexion, $sql);
@@ -35,7 +37,9 @@ class usuariosModel {
                         apellidos,                        
                         usuario,
                         password,                                                
-                        estado 
+                        estado,
+                        email,
+                        telefono 
                 FROM users where id = $user_id";
  
         $resultado = mysqli_query($conexion, $sql);
@@ -45,7 +49,7 @@ class usuariosModel {
     /**
      * funcion para crear nuevo usuario
      */
-    function crearUsuario($nombres, $apellidos, $usuario, $password, $user_id){
+    function crearUsuario($nombres, $apellidos, $usuario, $password, $user_id, $email, $telefono){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
         $sql = "INSERT INTO users
@@ -56,7 +60,9 @@ class usuariosModel {
                     password,                    
                     estado,
                     user_created_id,
-                    fecha_created)
+                    fecha_created,
+                    email,
+                    telefono)
                     VALUES
                     (
                     '$nombres',
@@ -65,7 +71,9 @@ class usuariosModel {
                     '$password',                                                        
                     'A',
                     $user_id,
-                    now())";        
+                    now(),
+                    '$email',
+                    '$telefono')";        
 
         $resultado = mysqli_query($conexion, $sql);
         if($resultado){
@@ -81,7 +89,7 @@ class usuariosModel {
      * Función para actualizar un usuario
      */
 
-    function actualizarUsuario($nombres, $apellidos, $usuario, $password, $user_update_id, $user_id){
+    function actualizarUsuario($nombres, $apellidos, $usuario, $password, $user_update_id, $user_id, $email, $telefono){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
         $sql = "UPDATE users 
@@ -90,7 +98,9 @@ class usuariosModel {
                         usuario = '$usuario',
                         password = '$password',                                            
                         user_updated_id = $user_update_id,
-                        fecha_updated = now()
+                        fecha_updated = now(),
+                        email =  '$email',
+                        telefono = '$telefono'
                 WHERE id = $user_id";        
         
         $resultado = mysqli_query($conexion, $sql);

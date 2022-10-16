@@ -4,6 +4,9 @@ $('#btnAgregarUsuario').on('click', function () {
     var apellidos = $('#apellidos').val();    
     var usuario = $('#usuario').val();
     var password = $('#password').val();
+    var email = $('#email').val();
+    var telefono = $('#telefono').val();
+    var redSocial = $('#redSocial').val();
     
     if (nombres == ""){
         alert('El nombre es obligatorio');
@@ -24,9 +27,19 @@ $('#btnAgregarUsuario').on('click', function () {
         return false;
     }
 
+    if (email == "") {
+        alert('El password es obligatorio');
+        return false;
+    }
+
+    if (telefono == "") {
+        alert('El password es obligatorio');
+        return false;
+    }
+
     $.ajax({
         type: 'POST',
-        data: "crear_usuario=1&nombres=" + nombres + "&apellidos=" + apellidos + "&usuario=" + usuario + "&password=" + password,
+        data: "crear_usuario=1&nombres=" + nombres + "&apellidos=" + apellidos + "&usuario=" + usuario + "&password=" + password + "&email=" + email + "&telefono="+telefono,
         url: 'controller/Usuarios/usuariosController.php',
         dataType: 'json',
         success: function(data){
@@ -109,12 +122,16 @@ function obtenerUsuario(id){
             var apellidos = data.apellidos;
             var usuario = data.usuario;
             var clave = data.password;
+            var email = data.email;
+            var telefono = data.telefono;
             
             $('#id_upd').val(id);
             $('#nombres_upd').val(nombres);
             $('#apellidos_upd').val(apellidos);
             $('#usuario_upd').val(usuario);
             $('#password_upd').val(clave);
+            $('#email_upd').var(email);
+            $('#telefono_upd').var(telefono);
 
             $('#formActualizaUsuario').modal('show');                            
         }
