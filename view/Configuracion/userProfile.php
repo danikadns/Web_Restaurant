@@ -23,7 +23,7 @@ include_once("../../model/functions.php");
                         <h4 class="m-t-0 m-b-40 header-title text-center"><b style="font-size: 20px;">
                                 <?php echo $_SESSION['user_nombre']." ".$_SESSION['user_apellido'];
                     ?></b></h4>
-                        <p class="card-text">Detalles del Usuario</p>
+                        <p class="card-text">Roll del Usuario</p>
                     </div>
 
                     <ul class="list-group list-group-flush">
@@ -83,7 +83,9 @@ include_once("../../model/functions.php");
                                     <th scope="row">Red Social</th>
                                     <td colspan="2">
                                         <figure>
-                                        <a target="_blank" href="<?php echo $_SESSION['red_social']?>"><img src="assets/img/logos/facebook.png" alt="Redes sociales" width="40px"></a>
+                                            <a target="_blank" href="<?php echo $_SESSION['red_social']?>"><img
+                                                    src="assets/img/logos/facebook.png" alt="Redes sociales"
+                                                    width="40px"></a>
                                         </figure>
                                     </td>
                                 </tr>

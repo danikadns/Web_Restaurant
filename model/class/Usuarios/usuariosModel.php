@@ -69,7 +69,7 @@ class usuariosModel {
                     '$apellidos',                     
                     '$usuario',
                     '$password',                                                        
-                    'A',
+                    'ACT',
                     $user_id,
                     now(),
                     '$email',

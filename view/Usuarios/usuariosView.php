@@ -62,7 +62,7 @@ $result = $usrClass->getUsuarios();
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <button class="btn btn-warning me-md-2" id="btnEditarUsuario"
                                         name="btnEditarUsuario" type="button"
-                                        onclick="obtenerUsuario(<?php echo $fila['id']; ?>);">Editar</button>
+                                        onclick="obtenerUsuario(<?php echo $fila['id']; ?>);"> Editar</button>
                                 </div>
                             </td>
                             <td>
@@ -77,7 +77,7 @@ $result = $usrClass->getUsuarios();
                         <?php 
                     }
                     ?>
-                        
+
                     </tbody>
                 </table>
             </div>
