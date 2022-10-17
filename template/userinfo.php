@@ -9,7 +9,7 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <h3><?php echo $_SESSION['username'] ?></h3>
+            <h3> <?php echo $_SESSION['username'] ?></h3>
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -23,13 +23,17 @@
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                 <li><a class="dropdown-item" href="#" onclick="cargarContenido('view/Configuracion/userProfile.php')">Mi
-                        Perfil</a></li>
+                        Perfil <i class="fa-sharp fa-solid fa-id-badge fa-flip"
+                            style="--fa-animation-duration: 3s;"></i></a>
+                </li>
                 <li><a class="dropdown-item" href="#"
-                        onclick="cargarContenido('view/Configuracion/configView.php')">Configuración</a></li>
+                        onclick="cargarContenido('view/Configuracion/configView.php')">Configuración <i
+                            class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 15s;"></i></a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="controller/Configuracion/cerrarSesion.php">Cerrar Sessión</a></li>
+                <li><a class="dropdown-item" href="controller/Configuracion/cerrarSesion.php">Cerrar Sessión <i
+                            class="fa-sharp fa-solid fa-right-to-bracket"></i></a></li>
 
             </ul>
         </div>

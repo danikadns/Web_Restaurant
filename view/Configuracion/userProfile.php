@@ -23,7 +23,7 @@ include_once("../../model/functions.php");
                         <h4 class="m-t-0 m-b-40 header-title text-center"><b style="font-size: 20px;">
                                 <?php echo $_SESSION['user_nombre']." ".$_SESSION['user_apellido'];
                     ?></b></h4>
-                        <p class="card-text">Roll del Usuario</p>
+                        <p class="card-text" align="center">Roll del Usuario</p>
                     </div>
 
                     <ul class="list-group list-group-flush">
@@ -54,6 +54,9 @@ include_once("../../model/functions.php");
                                 <tr>
                                     <th scope="col">Descripcion</th>
                                     <th scope="col">Dato</th>
+                                    <td scope="col" align="right"><i class="fa-sharp fa-solid fa-user-pen fa-beat-fade"
+                                            style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.025;"></i>
+                                    </td>
                                 </tr>
                             </thead>
                             <tbody>
