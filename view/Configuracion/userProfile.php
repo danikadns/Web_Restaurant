@@ -7,6 +7,8 @@ include_once("../../model/functions.php");
 
 ?>
 
+
+
 <script src="assets/js/moduloUsuarios.js"></script>
 
 <div class="card">
@@ -27,9 +29,10 @@ include_once("../../model/functions.php");
                     </div>
 
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">Edad</li>
+                        <li class="list-group-item">Genero</li>
+                        <li class="list-group-item">Nacionalidad</li>
+                        <li class="list-group-item">Fecha de Nacimiento</li>
                     </ul>
 
                     <div class="card-body">
@@ -54,8 +57,11 @@ include_once("../../model/functions.php");
                                 <tr>
                                     <th scope="col">Descripcion</th>
                                     <th scope="col">Dato</th>
-                                    <td scope="col" align="right"><i class="fa-sharp fa-solid fa-user-pen fa-beat-fade"
-                                            style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.025;"></i>
+                                    <td scope="col" align="right"><i
+                                            class="btn btn-warning  fa-sharp fa-solid fa-user-pen fa-beat-fade"
+                                            type="button"
+                                            style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.025;"
+                                            onclick="obtenerUsuario(<?php echo $_SESSION['user_id']; ?>);"></i>
                                     </td>
                                 </tr>
                             </thead>

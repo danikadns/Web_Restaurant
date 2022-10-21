@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "simonsiefke.prettier-vscode",
+        "sophisticode.php-formatter",
+        "junstyle.php-cs-fixer",
+        "TabNine.tabnine-vscode"
+    ]
+}

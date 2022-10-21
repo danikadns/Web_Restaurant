@@ -47,8 +47,8 @@ $result = $usrClass->getUsuarios();
                     </thead>
                     <tbody>
 
-                        <?php 
-                while ($fila = mysqli_fetch_array($result)){
+                        <?php
+                while ($fila = mysqli_fetch_array($result)) {
                     ?>
                         <tr>
                             <th><?php echo $fila['id']; ?></th>
@@ -74,9 +74,9 @@ $result = $usrClass->getUsuarios();
                             </td>
                         </tr>
 
-                        <?php 
-                    }
-                    ?>
+                        <?php
+                }
+?>
 
                     </tbody>
                 </table>
@@ -84,7 +84,7 @@ $result = $usrClass->getUsuarios();
         </div>
     </div>
     <!-- AQUI INICIA ESTA EL FORMULARIO MODAL PARA AGREGAR USUARIOS -->
-    <div class="modal fade" id="formNuevoUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade " id="formNuevoUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -121,12 +121,14 @@ $result = $usrClass->getUsuarios();
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="telefono" placeholder="aqui va tu número de telefono">
+                        <input type="text" class="form-control" id="telefono"
+                            placeholder="aqui va tu número de telefono">
                         <label for="telefono">Teléfono</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="redSocial" placeholder="aqui va tu link de red social">
+                        <input type="text" class="form-control" id="redSocial"
+                            placeholder="aqui va tu link de red social">
                         <label for="redSocial">Red social</label>
                     </div>
 
@@ -140,7 +142,7 @@ $result = $usrClass->getUsuarios();
         </div>
     </div>
 
-    <!-- AQUI INICIA ESTA EL FORMULARIO MODAL PARA AGREGAR USUARIOS -->
+    <!-- AQUI ESTA EL FORMULARIO MODAL PARA ACTUALIZAR USUARIOS -->
     <div class="modal fade" id="formActualizaUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -185,15 +187,19 @@ $result = $usrClass->getUsuarios();
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="telefono_upd" placeholder="aqui va tu número de telefono">
+                        <input type="text" class="form-control" id="telefono_upd"
+                            placeholder="aqui va tu número de telefono">
                         <label for="telefono_upd">Teléfono</label>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnActualizarUsuario">Actualizar Usuario</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                </div>
+                    </div>
 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btnActualizarUsuario">Actualizar
+                            Usuario</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
