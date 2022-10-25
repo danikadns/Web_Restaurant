@@ -32,7 +32,7 @@ $('#btnAgregarUsuario').on('click', function () {
         Swal.fire({
             icon: 'warning',
             title: '¡Edición Incompleta!',
-            text: '!El Nombre nombre es requerido!',
+            text: '!El Nombre es requerido!',
         })
         return false;
     }
@@ -122,7 +122,7 @@ $('#btnActualizarUsuario').on('click', function () {
         Swal.fire({
             icon: 'warning',
             title: '¡Edición Incompleta!',
-            text: '!El Nombre nombre es requerido!',
+            text: '!El nombre es requerido!',
         })
         return false;
     }
