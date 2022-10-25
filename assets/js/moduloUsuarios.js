@@ -13,7 +13,7 @@ function bienvenidoUser() {
 
     Toast.fire({
         icon: 'success',
-        title: 'Bienvenido Nuevamente'
+        title: 'BIENVENIDO'
     })
 }
 
