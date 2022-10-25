@@ -29,11 +29,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="theme-color" content="#7952b3">
 
-    
 
-    <link rel="stylesheet" type="text/css"  href="assets/css/template.css" />
-    <link rel="stylesheet" type="text/css"  href="assets/css/status_server_modal.css" />
-    <script src="assets/js/contentManager.js"></script>   
+
+    <link rel="stylesheet" type="text/css" href="assets/css/template.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/status_server_modal.css" />
+    <script src="assets/js/contentManager.js"></script>
+    <script src="assets/js/moduloUsuarios.js"></script>
 </head>
 
 <body>

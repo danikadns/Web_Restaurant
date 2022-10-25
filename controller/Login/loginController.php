@@ -1,4 +1,5 @@
 <?php
+
 ob_start();
 session_start();
 
@@ -13,7 +14,7 @@ $result = array();
 
 $result = $loginModel->autenticar($usuario, $clave);
 
-if($row = mysqli_fetch_array($result)){
+if ($row = mysqli_fetch_array($result)) {
     $_SESSION['user_id'] = $row['id'];
     $_SESSION['user_nombre'] = $row['nombres'];
     $_SESSION['user_apellido'] = $row['apellidos'];
@@ -23,14 +24,13 @@ if($row = mysqli_fetch_array($result)){
     $_SESSION['red_social'] = $row['red_social'];
 
     header("location: ../../main.php");
-}else{
 
+} else {
     echo "<script>
             alert('AUTENTICACIÓN FALLIDA, AL PARECER SU USUARIO O CLAVE SON INVÁLIDOS');
             history.back();
         </script>";
     exit(-1);
-    
 }
 
 /*echo "USUARIO: ".$usuario." CLAVE: ".$clave;
@@ -39,4 +39,5 @@ echo "NO HAY DATOS";
 */
 
 ob_end_flush();
+
 ?>

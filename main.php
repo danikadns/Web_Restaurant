@@ -56,5 +56,6 @@ $(document).ready(function() {
 
     //CARGANDO EL CONTENIDO PRINCIPAL
     cargarContenido('home.php');
+    bienvenidoUser();
 });
 </script>
