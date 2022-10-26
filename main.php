@@ -4,7 +4,7 @@ if(!$_SESSION['user_id']){
     header("location: index.php");
 } 
 
-# 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 -Token-
+# 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 -Token-
 
 #IMPORTANDO EL TEMPLATE
 
