@@ -9,7 +9,7 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <h3> <?php echo $_SESSION['username'] ?></h3>
+            <h3>⠀<?php echo $_SESSION['username'] ?></h3>
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">

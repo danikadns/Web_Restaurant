@@ -4,7 +4,7 @@ if(!$_SESSION['user_id']){
     header("location: index.php");
 } 
 
-# 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 -Token-
+# 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 -Token-
 
 #IMPORTANDO EL TEMPLATE
 
@@ -56,5 +56,6 @@ $(document).ready(function() {
 
     //CARGANDO EL CONTENIDO PRINCIPAL
     cargarContenido('home.php');
+    bienvenidoUser();
 });
 </script>

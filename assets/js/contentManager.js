@@ -1,4 +1,4 @@
-function cargarContenido(form){
+function cargarContenido(form) {
     var formulario = form;
 
     $.ajax({

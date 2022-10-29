@@ -1,0 +1,7 @@
+{
+    "editor.defaultFormatter": "SimonSiefke.prettier-vscode",
+    "editor.definitionLinkOpensInPeek": true,
+    "[php]": {
+        "editor.defaultFormatter": "junstyle.php-cs-fixer"
+    }
+}

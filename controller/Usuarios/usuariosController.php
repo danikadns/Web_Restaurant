@@ -1,6 +1,7 @@
-<?php 
+<?php
+
 session_start();
-if (!$_SESSION['user_id']){
+if (!$_SESSION['user_id']) {
     header("location: ../../index.php");
 }
 
@@ -15,12 +16,12 @@ $actualizarUsuario = (isset($_POST['actualizar_usuario'])) ? $_POST['actualizar_
 $eliminarUsuario = (isset($_POST['eliminar_usuario'])) ? $_POST['eliminar_usuario'] : "0";
 
 
-if($obtenerUsuario == 1){
+if ($obtenerUsuario == 1) {
     $user_id = (isset($_POST['user_id'])) ? $_POST['user_id'] : "0";
-        
+
     $result = $usrClass->getUsuarioById($user_id);
 
-    if ($fila = mysqli_fetch_array($result)){
+    if ($fila = mysqli_fetch_array($result)) {
         $respuesta['id'] = $fila['id'];
         $respuesta['nombres'] = $fila['nombres'];
         $respuesta['apellidos'] = $fila['apellidos'];
@@ -33,36 +34,36 @@ if($obtenerUsuario == 1){
     echo json_encode($respuesta);
 }
 
-if($crearUsuario == 1){
+if ($crearUsuario == 1) {
     $nombres = (isset($_POST['nombres'])) ? $_POST['nombres'] : "0";
-    $apellidos = (isset($_POST['apellidos'])) ? $_POST['apellidos'] : "0";    
+    $apellidos = (isset($_POST['apellidos'])) ? $_POST['apellidos'] : "0";
     $usuario = (isset($_POST['usuario'])) ? $_POST['usuario'] : "0";
     $password = (isset($_POST['password'])) ? $_POST['password'] : "0";
     $email = (isset($_POST['email'])) ? $_POST['email'] : "";
     $telefono = (isset($_POST['telefono'])) ? $_POST['telefono'] : "";
-        
-    $result = $usrClass->crearUsuario($nombres, $apellidos, $usuario, $password, $_SESSION['user_id'], $email, $telefono,);
+
+    $result = $usrClass->crearUsuario($nombres, $apellidos, $usuario, $password, $_SESSION['user_id'], $email, $telefono, );
 
     $respuesta['resultado'] = $result;
     echo json_encode($respuesta);
 }
 
-if($actualizarUsuario == 1){
+if ($actualizarUsuario == 1) {
     $user_id = (isset($_POST['id'])) ? $_POST['id'] : "0";
     $nombres = (isset($_POST['nombres'])) ? $_POST['nombres'] : "0";
-    $apellidos = (isset($_POST['apellidos'])) ? $_POST['apellidos'] : "0";    
+    $apellidos = (isset($_POST['apellidos'])) ? $_POST['apellidos'] : "0";
     $usuario = (isset($_POST['usuario'])) ? $_POST['usuario'] : "0";
     $password = (isset($_POST['password'])) ? $_POST['password'] : "0";
     $email = (isset($_POST['email'])) ? $_POST['email'] : "";
     $telefono = (isset($_POST['telefono'])) ? $_POST['telefono'] : "";
-        
+
     $result = $usrClass->actualizarUsuario($nombres, $apellidos, $usuario, $password, $_SESSION['user_id'], $user_id, $email, $telefono);
 
     $respuesta['resultado'] = $result;
     echo json_encode($respuesta);
 }
 
-if($eliminarUsuario == 1){
+if ($eliminarUsuario == 1) {
     $user_id = (isset($_POST['user_id'])) ? $_POST['user_id'] : "0";
 
     $result = $usrClass->eliminarUsuario($user_id);
@@ -70,4 +71,3 @@ if($eliminarUsuario == 1){
     $respuesta['resultado'] = $result;
     echo json_encode($respuesta);
 }
-?>
