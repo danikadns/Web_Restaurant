@@ -17,6 +17,14 @@ function bienvenidoUser() {
     })
 }
 
+function loginFallido() {
+    Swal.fire(
+        '¡AUTENTICACIÓN FALLIDA!',
+        '¡Asegurese de que todo este correctamente!',
+        'question'
+    )
+}
+
 
 $('#btnAgregarUsuario').on('click', function () {
 

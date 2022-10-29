@@ -55,9 +55,12 @@
                                 placeholder="Ingrese su password" id="inPassword" name="inPassword" />
                         </div>
 
-                        <div class="text-center  mt-4 pt-2">
-                            <button type="submit" class="btn ">Iniciar Sesión</button>
+                        <div class="text-center  mt-3 pt-2">
+                            <button id="btnLogin" type="submit" class="btn ">Iniciar Sesión</button>
+                        </div>
 
+                        <div class="text-center  mt-2 pt-2"><a type="button" class="btn btn-outline-warning"
+                                href="register.php" class="fw-bold text-body"><u>Registrarme</u></a>
                         </div>
                     </form>
                 </div>

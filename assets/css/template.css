@@ -74,3 +74,10 @@ body {
 .menu_opcion {
     color: white !important;
 }
+
+#fotoPerfil {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+
+}
