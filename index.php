@@ -37,7 +37,7 @@
                                 height="200">
                         </div>
 
-                        <div class="divider d-flex align-items-center my-1">
+                        <div class="divider d-flex align-items-center my-1 text-white">
                             <p class="text-center fw-bold mx-1 mb-0">BIENVENIDO AL SISTEMA</p>
                         </div>
 

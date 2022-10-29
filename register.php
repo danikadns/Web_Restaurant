@@ -40,13 +40,24 @@
                         <div class="col-12 col-md-10 col-lg-7 col-xl-6">
                             <div class="card mask-custom">
                                 <div class="card-body p-4 text-white">
-                                    <div class="my-4">
-                                        <h2 class="text-center mb-5">Registro</h2>
+                                    <div class="my-3">
+                                        <h2 class="text-center mb-3">Registro</h2>
 
                                         <form>
                                             <!-- 2 column grid layout with text inputs for the first and last names -->
                                             <div class="row">
-                                                <div class="col-12 col-md-6 mb-4">
+                                                <div class="col-12 col-md-12 mb-3">
+                                                    <div class="form-outline form-white">
+                                                        <input type="text" id="form3Example1"
+                                                            class="form-control form-control-lg" />
+                                                        <label class="form-label" for="form3Example1">
+                                                            Username
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 mb-3">
                                                     <div class="form-outline form-white">
                                                         <input type="text" id="form3Example1"
                                                             class="form-control form-control-lg" />
@@ -55,7 +66,7 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-6 mb-4">
+                                                <div class="col-12 col-md-6 mb-3">
                                                     <div class="form-outline form-white">
                                                         <input type="text" id="form3Example2"
                                                             class="form-control form-control-lg" />
@@ -67,7 +78,7 @@
                                             </div>
 
                                             <!-- Email input -->
-                                            <div class="form-outline form-white mb-4">
+                                            <div class="form-outline form-white mb-3">
                                                 <input type="email" id="form3Example3"
                                                     class="form-control form-control-lg" />
                                                 <label class="form-label" for="form3Example3">
@@ -76,7 +87,7 @@
                                             </div>
 
                                             <!-- Password input -->
-                                            <div class="form-outline form-white mb-4">
+                                            <div class="form-outline form-white mb-3">
                                                 <input type="password" id="form3Example4"
                                                     class="form-control form-control-lg" />
                                                 <label class="form-label" for="form3Example4">
@@ -84,8 +95,16 @@
                                                 </label>
                                             </div>
 
+                                            <div class="form-outline form-white mb-3">
+                                                <input type="password" id="form3Example4"
+                                                    class="form-control form-control-lg" />
+                                                <label class="form-label" for="form3Example4">
+                                                    Confirmar contraseña
+                                                </label>
+                                            </div>
+
                                             <!-- Checkbox -->
-                                            <div class="form-check d-flex justify-content-center mb-4">
+                                            <div class="form-check d-flex justify-content-center mb-2">
                                                 <input class="form-check-input me-2" type="checkbox" value=""
                                                     id="form2Example3" checked />
                                                 <label class="form-check-label" for="form2Example3">
