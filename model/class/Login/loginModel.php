@@ -6,7 +6,7 @@ class loginModel {
      * METODO DE AUTENTICACION
      */
 
-     function autenticar($user, $pass){
+    function autenticar($user, $pass){
         $connClass = new Tools();
         $conexion = $connClass->conectar();
 
@@ -23,7 +23,9 @@ class loginModel {
         $connClass->desconectar($conexion);
         
         return $resultado;
-     }
+    }
+
+    
 
 
 }
