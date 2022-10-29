@@ -19,8 +19,9 @@ include_once("../../model/functions.php");
             <div class="col-4 pb-2 pt-3">
                 <!-- Sección de tipo targeta con imagen -->
                 <div class="card" style="width: 100%;">
-                    <img id="fotoPerfil" src="assets/img/fotos/user.png" class="card-img-top" alt="Foto_perfil">
-
+                    <div class="card-head pt-2 pb-2" align="center">
+                        <img id="fotoPerfil" src="assets/img/fotos/user.png" class="circular--square" alt="Foto_perfil">
+                    </div>
                     <div class="card-body">
                         <h4 class="m-t-0 m-b-40 header-title text-center"><b style="font-size: 20px;">
                                 <?php echo $_SESSION['user_nombre']." ".$_SESSION['user_apellido'];
