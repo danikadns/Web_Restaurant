@@ -1,10 +1,10 @@
 $('#btnActualizarPass').on('click', function () {
-    
+
     var nuevaPass = $('#inPassNueva').val();
     var password = $('#inPass').val();
     var passConfirm = $('#inPassConfirm').val();
-    
-    if (nuevaPass == ""){
+
+    if (nuevaPass == "") {
         alert('Debe ingresar una contraseña');
         return false;
     }
@@ -22,25 +22,25 @@ $('#btnActualizarPass').on('click', function () {
         data: "comprobar_pass=1&nuevaPass=" + nuevaPass + "&password=" + password,
         url: 'controller/Configuracion/configController.php',
         dataType: 'json',
-        success: function(data){
+        success: function (data) {
             var contraseña = data.password;
-            if(contraseña == password){
+            if (contraseña == password) {
                 $.ajax({
                     type: 'POST',
                     data: "actualizar_pass=1&nuevaPass=" + nuevaPass + "&password=" + password,
                     url: 'controller/Configuracion/configController.php',
                     dataType: 'json',
-                    success: function(data){
+                    success: function (data) {
                         var resultado = data.resultado;
-                        if(resultado === 1){
+                        if (resultado === 1) {
                             alert('Contraseña actualizada correctamente');
                             cargarContenido('home.php');
-                        }else{
+                        } else {
                             alert('No se pudo actualizar la contraseña');
                         }
                     }
                 });
-            }else{
+            } else {
                 alert('La contraseña es incorrecta');
             }
         }
@@ -133,10 +133,18 @@ $('#btnActualizarUsuario').on('click', function () {
         success: function (data) {
             var resultado = data.resultado;
             if (resultado === 1) {
-                alert('Edicion completada');
+                Swal.fire(
+                    '!Usuario actualizado exitosamente!',
+                    '!Recargue la pagina!',
+                    'success'
+                );
                 cargarContenido('view/Configuracion/userProfile.php');
             } else {
-                alert('No se pudo actualizar los datos del usuario');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '!Algo salió mal!',
+                })
             }
         }
     });

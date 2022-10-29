@@ -109,7 +109,11 @@ $('#btnAgregarUsuario').on('click', function () {
                 );
                 cargarContenido('view/Usuarios/usuariosView.php');
             } else {
-                alert('No se pudo crear el usuario');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '!Algo salió mal!',
+                })
             }
         }
     });
@@ -191,10 +195,18 @@ $('#btnActualizarUsuario').on('click', function () {
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
 
-                alert('Usuario actualizado exitosamente');
+                Swal.fire(
+                    '!Usuario actualizado exitosamente!',
+                    '!Recargue la pagina!',
+                    'success'
+                );
                 cargarContenido('view/Usuarios/usuariosView.php');
             } else {
-                alert('No se pudo actualizar los datos del usuario');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '!Algo salió mal!',
+                })
             }
         }
     });
