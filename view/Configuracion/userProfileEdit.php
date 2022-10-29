@@ -8,8 +8,9 @@ include_once("../../model/functions.php");
 ?>
 
 
+
 <script src="assets/js/moduloConfig.js"></script>
-<script>mostrarUsuario(<?php echo $_SESSION['user_id']?>);</script>
+<script>obtenerUsuario(<?php echo $_SESSION['user_id']?>);</script>
 
 <div class="card">
     <div class="container">
@@ -60,33 +61,46 @@ include_once("../../model/functions.php");
                                     <td scope="col" align="right"><i
                                             class="btn btn-warning  fa-sharp fa-solid fa-user-pen fa-beat-fade"
                                             type="button"
-                                            style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.025;"
-                                            onclick="cargarContenido('view/Configuracion/userProfileEdit.php')"></i>
+                                            id="btnActualizarUsuario"
+                                            style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.025;"></i>
                                     </td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">Nombre de Usuario</th>
-                                    <td colspan="2"><?php echo $_SESSION['username'] ?></td>
+                                    <td colspan="2">
+                                        <input type="text" class="form-control" id="user_edit">
+                                        <label for="user_edit">Username</label>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Correo electronico</th>
-                                    <td colspan="2"><?php echo $_SESSION['email']?></td>
+                                    <td colspan="2">
+                                        <input type="text" class="form-control" id="email_edit">
+                                        <label for="email_edit">Correo electronico</label>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Nombres</th>
-                                    <td colspan="2"><?php echo $_SESSION['user_nombre'];
-                    ?></b></td>
+                                    <td colspan="2">
+                                        <input type="text" class="form-control" id="name_edit">
+                                        <label for="name_edit">Nombre</label>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Apellidos</th>
-                                    <td colspan="2"><?php echo $_SESSION['user_apellido'];
-                    ?></td>
+                                    <td colspan="2">
+                                        <input type="text" class="form-control" id="lastname_edit">
+                                        <label for="lastname_edit">Apellidos</label>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Numero de Telefono</th>
-                                    <td colspan="2"><?php echo $_SESSION['telefono']?></td>
+                                    <td colspan="2">
+                                        <input type="text" class="form-control" id="phone_edit">
+                                        <label for="phone_edit">Nombre</label>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Red Social</th>
