@@ -20,7 +20,7 @@ include_once("../../model/functions.php");
                 <!-- Sección de tipo targeta con imagen -->
                 <div class="card" style="width: 100%;">
                     <div class="card-head pt-2 pb-2" align="center">
-                        <img id="fotoPerfil" src="assets/img/fotos/user.png" class="circular--square" alt="Foto_perfil">
+                        <img id="fotoPerfil" src="<?php echo $_SESSION['ruta']?>" class="circular--square" alt="Foto_perfil">
                     </div>
                     <div class="card-body">
                         <h4 class="m-t-0 m-b-40 header-title text-center"><b style="font-size: 20px;">

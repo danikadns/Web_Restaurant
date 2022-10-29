@@ -22,6 +22,7 @@ if ($row = mysqli_fetch_array($result)) {
     $_SESSION['email'] = $row['email'];
     $_SESSION['telefono'] = $row['telefono'];
     $_SESSION['red_social'] = $row['red_social'];
+    $_SESSION['ruta'] = "assets/img/imagenes/user.png";
 
     header("location: ../../main.php");
 

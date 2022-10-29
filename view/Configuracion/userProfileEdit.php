@@ -20,13 +20,20 @@ include_once("../../model/functions.php");
             <div class="col-4 pb-2 pt-3">
                 <!-- Sección de tipo targeta con imagen -->
                 <div class="card" style="width: 100%;">
-                    <img id="fotoPerfil" src="assets/img/fotos/user.png" class="card-img-top" alt="Foto_perfil">
-
+                    <div class="card-head pt-2 pb-2" align="center">
+                        <img id="fotoPerfil" src="<?php echo $_SESSION['ruta']?>" class="card-img-top" alt="Foto_perfil">
+                    </div>
                     <div class="card-body">
                         <h4 class="m-t-0 m-b-40 header-title text-center"><b style="font-size: 20px;">
                                 <?php echo $_SESSION['user_nombre']." ".$_SESSION['user_apellido'];
                     ?></b></h4>
                         <p class="card-text" align="center">Roll del Usuario</p>
+                        <form id="form1" enctype="multipart/form-data" method="post" action="controller/Configuracion/recepcion.php">
+                            <label>Imagen
+                                <input id="campofotografia" name="campofotografia" type="file" />
+                            </label>
+                            <input id="enviar" name="enviar" type="submit" value="Enviar" />
+                        </form>
                     </div>
 
                     <ul class="list-group list-group-flush">
@@ -71,35 +78,35 @@ include_once("../../model/functions.php");
                                     <th scope="row">Nombre de Usuario</th>
                                     <td colspan="2">
                                         <input type="text" class="form-control" id="user_edit">
-                                        <label for="user_edit">Username</label>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Correo electronico</th>
                                     <td colspan="2">
                                         <input type="text" class="form-control" id="email_edit">
-                                        <label for="email_edit">Correo electronico</label>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Nombres</th>
                                     <td colspan="2">
                                         <input type="text" class="form-control" id="name_edit">
-                                        <label for="name_edit">Nombre</label>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Apellidos</th>
                                     <td colspan="2">
                                         <input type="text" class="form-control" id="lastname_edit">
-                                        <label for="lastname_edit">Apellidos</label>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Numero de Telefono</th>
                                     <td colspan="2">
                                         <input type="text" class="form-control" id="phone_edit">
-                                        <label for="phone_edit">Nombre</label>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
