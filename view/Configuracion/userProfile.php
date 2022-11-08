@@ -9,18 +9,21 @@ include_once("../../model/functions.php");
 
 
 <script src="assets/js/moduloConfig.js"></script>
-<script>mostrarUsuario(<?php echo $_SESSION['user_id']?>);</script>
+<script>
+mostrarUsuario(<?php echo $_SESSION['user_id']?>);
+</script>
 
-<div class="card">
+<div id="cardPerfil" class="card">
     <div class="container">
         <div class="row">
 
             <!-- Columna izquierda con decripción breve del usuario -->
             <div class="col-4 pb-2 pt-3">
                 <!-- Sección de tipo targeta con imagen -->
-                <div class="card" style="width: 100%;">
+                <div id="cardSeccion" class="card" style="width: 100%;">
                     <div class="card-head pt-2 pb-2" align="center">
-                        <img id="fotoPerfil" src="<?php echo $_SESSION['ruta']?>" class="circular--square" alt="Foto_perfil">
+                        <img id="fotoPerfil" src="<?php echo $_SESSION['ruta']?>" class="circular--square"
+                            alt="Foto_perfil">
                     </div>
                     <div class="card-body">
                         <h4 class="m-t-0 m-b-40 header-title text-center"><b style="font-size: 20px;">
@@ -45,7 +48,7 @@ include_once("../../model/functions.php");
             </div>
             <!-- Columna Derecha con decripción completa del usuario -->
             <div class="col-8 pb-2 pt-3">
-                <div class="card">
+                <div id="cardSeccion" class="card">
                     <div class="card-header">
                         <div
                             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

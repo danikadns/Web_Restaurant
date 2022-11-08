@@ -11,15 +11,16 @@ if(!$_SESSION['user_id']){
 #header
 include 'template/header.php';
 
+#SiderBar
+include 'template/menu.php';
+
 #Userinfo
 include 'template/userinfo.php';
 
-#Barra de menús
-include 'template/menu.php';
 ?>
 
 
-<!-- INJECCIÓN DEL CONTENIDO DINAMICO  -->
+<!-- INJECCIÓN DEL CONTENIDO DINAMICO  
 <div class="wrapper">
     <div class="container">
 
@@ -33,6 +34,20 @@ include 'template/menu.php';
 
     </div>
 </div>
+-->
+
+<!-- INJECCIÓN DEL CONTENIDO DINAMICO  -->
+<!-- Blank Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+        <div class="col-md-9 ms-sm-auto col-lg-12">
+            <div class="container-fluid" id="contenedorPrincipal">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blank End -->
 
 
 <?php

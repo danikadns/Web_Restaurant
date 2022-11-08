@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
+    <title>Registro de nuevo Usuario</title>
     <!-- MDB icon -->
     <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
     <!-- Font Awesome -->
@@ -43,14 +43,14 @@
                                     <div class="my-3">
                                         <h2 class="text-center mb-3">Registro</h2>
 
-                                        <form>
-                                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                                        <form method="POST" action="controller/Login/registerController.php">
+                                            <!-- Ingreso de datos exclusivamente para Clientes -->
                                             <div class="row">
                                                 <div class="col-12 col-md-12 mb-3">
                                                     <div class="form-outline form-white">
-                                                        <input type="text" id="form3Example1"
+                                                        <input type="text" id="inNewUser" name="inNewUser"
                                                             class="form-control form-control-lg" />
-                                                        <label class="form-label" for="form3Example1">
+                                                        <label class="form-label" for="inNewUser">
                                                             Username
                                                         </label>
                                                     </div>
@@ -59,18 +59,18 @@
                                             <div class="row">
                                                 <div class="col-12 col-md-6 mb-3">
                                                     <div class="form-outline form-white">
-                                                        <input type="text" id="form3Example1"
+                                                        <input type="text" id="inNewName" name="inNewName"
                                                             class="form-control form-control-lg" />
-                                                        <label class="form-label" for="form3Example1">
+                                                        <label class="form-label" for="inNewName">
                                                             Nombre
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-md-6 mb-3">
                                                     <div class="form-outline form-white">
-                                                        <input type="text" id="form3Example2"
+                                                        <input type="text" id="inNewLastName" name="inNewLastName"
                                                             class="form-control form-control-lg" />
-                                                        <label class="form-label" for="form3Example2">
+                                                        <label class="form-label" for="inNewLastName">
                                                             Apellido
                                                         </label>
                                                     </div>
@@ -79,26 +79,26 @@
 
                                             <!-- Email input -->
                                             <div class="form-outline form-white mb-3">
-                                                <input type="email" id="form3Example3"
+                                                <input type="email" id="inNewEmail" name="inNewEmail"
                                                     class="form-control form-control-lg" />
-                                                <label class="form-label" for="form3Example3">
+                                                <label class="form-label" for="inNewEmail">
                                                     Correo electronico
                                                 </label>
                                             </div>
 
                                             <!-- Password input -->
                                             <div class="form-outline form-white mb-3">
-                                                <input type="password" id="form3Example4"
+                                                <input type="password" id="inNewPass" name="inNewPass"
                                                     class="form-control form-control-lg" />
-                                                <label class="form-label" for="form3Example4">
+                                                <label class="form-label" for="inNewPass">
                                                     Contraseña
                                                 </label>
                                             </div>
 
                                             <div class="form-outline form-white mb-3">
-                                                <input type="password" id="form3Example4"
+                                                <input type="password" id="InPassConfirm" name="InPassConfirm"
                                                     class="form-control form-control-lg" />
-                                                <label class="form-label" for="form3Example4">
+                                                <label class="form-label" for="InPassConfirm">
                                                     Confirmar contraseña
                                                 </label>
                                             </div>
@@ -107,7 +107,7 @@
                                             <div class="form-check d-flex justify-content-center mb-2">
                                                 <input class="form-check-input me-2" type="checkbox" value=""
                                                     id="form2Example3" checked />
-                                                <label class="form-check-label" for="form2Example3">
+                                                <label class="form-check-label" for="T&C">
                                                     Acepto los terminos y condiciones del establecimiento
                                                 </label>
                                             </div>

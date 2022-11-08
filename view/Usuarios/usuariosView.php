@@ -14,24 +14,25 @@ $result = $usrClass->getUsuarios();
 
 ?>
 <script src="assets/js/moduloUsuarios.js"></script>
-<div class="card">
+
+<div class="card-responsive">
     <div class="card-header">
         <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">LISTADO DE USUARIOS</h1>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-success me-md-2" id="btnNuevoUsuario" name="btnNuevoUsuario" type="button"
+                    data-bs-toggle="modal" data-bs-target="#formNuevoUsuario">Nuevo Usuario</button>
+            </div>
         </div>
     </div>
 
     <div class="card-body">
 
-
-        <div class="container">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-success me-md-2" id="btnNuevoUsuario" name="btnNuevoUsuario" type="button"
-                    data-bs-toggle="modal" data-bs-target="#formNuevoUsuario">Nuevo Usuario</button>
-            </div>
+        <div class="bg-secondary rounded h-100 p-0">
             <div class="table-responsive">
-                <table class="table ">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>

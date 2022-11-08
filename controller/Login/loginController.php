@@ -11,7 +11,6 @@ $usuario = $_POST['inUsuario'];
 $clave = $_POST['inPassword'];
 
 $result = array();
-$resultado = array();
 
 $result = $loginModel->autenticar($usuario, $clave);
 
