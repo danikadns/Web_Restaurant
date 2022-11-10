@@ -7322,6 +7322,8 @@ fieldset:disabled .btn {
 
 .border-bottom {
     border-bottom: 1px solid #000 !important;
+    border-bottom-color: #fff;
+    color: #fff;
 }
 
 .border-bottom-0 {

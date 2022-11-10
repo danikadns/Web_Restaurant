@@ -34,6 +34,7 @@ if ($row = mysqli_fetch_array($result)) {
     exit(-1);
 }
 
+
 /*echo "USUARIO: ".$usuario." CLAVE: ".$clave;
 echo "NOMBRES: ".$row['nombres']."APELLIDOS: ".$row['apellidos'];
 echo "NO HAY DATOS";

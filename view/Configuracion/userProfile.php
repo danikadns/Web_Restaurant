@@ -13,14 +13,14 @@ include_once("../../model/functions.php");
 mostrarUsuario(<?php echo $_SESSION['user_id']?>);
 </script>
 
-<div id="cardPerfil" class="card">
+<div id="cardPerfil" class="card-responsive">
     <div class="container">
         <div class="row">
 
             <!-- Columna izquierda con decripción breve del usuario -->
             <div class="col-4 pb-2 pt-3">
                 <!-- Sección de tipo targeta con imagen -->
-                <div id="cardSeccion" class="card" style="width: 100%;">
+                <div id="cardSeccion" class="card-responsive" style="width: 100%;">
                     <div class="card-head pt-2 pb-2" align="center">
                         <img id="fotoPerfil" src="<?php echo $_SESSION['ruta']?>" class="circular--square"
                             alt="Foto_perfil">
@@ -32,12 +32,26 @@ mostrarUsuario(<?php echo $_SESSION['user_id']?>);
                         <p class="card-text" align="center">Roll del Usuario</p>
                     </div>
 
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Edad</li>
-                        <li class="list-group-item">Genero</li>
-                        <li class="list-group-item">Nacionalidad</li>
-                        <li class="list-group-item">Fecha de Nacimiento</li>
-                    </ul>
+                    <table class="table table-striped-columns">
+                        <tbody>
+                            <tr>
+                            <tr>
+                                <td colspan="2">Edad</td>
+                                <th scope="row"></th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Genero</td>
+                                <th scope="row"></th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Nacionalidad</b></td>
+                                <th scope="row"></th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Fecha de Nacimiento</td>
+                                <th scope="row"></th>
+                        </tbody>
+                    </table>
 
                     <div class="card-body">
                         <a href="#" class="card-link">Card link</a>
@@ -105,12 +119,11 @@ mostrarUsuario(<?php echo $_SESSION['user_id']?>);
                             </tbody>
                         </table>
 
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-text" id="inputGroup-sizing-lg">Other Date</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-lg">
-                        </div>
+                        <br>
                     </div>
+                    <br>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>

@@ -3,9 +3,9 @@
     --orangeGradient: radial-gradient(circle at 104.5% 50%, #dfb953 0, #e5af4c 10%, #eaa345 20%, #ed9741 30%, #f0893d 40%, #f2793c 50%, #f3683d 60%, #f35741 70%, #f34448 80%, #f22e50 90%, #f0105b 100%);
     --redGradient: radial-gradient(circle at 113.74% 50%, #ffad00 0, #ff9a00 10%, #ff8617 20%, #ff6f2b 30%, #ff5636 40%, #f23c3c 50%, #da1f40 60%, #c40043 70%, #b10046 80%, #a0004a 90%, #91004f 100%);
     --redDark: linear-gradient(to right, #870000, #190a05);
-    --primary: #EB1616;
+    --primary: #fff;
     --secondary: #191C24;
-    --light: #6C7293;
+    --light: #fff;
     --dark: #000000;
 
 }
@@ -135,7 +135,7 @@
 .sidebar .navbar .navbar-nav .nav-link:hover,
 .sidebar .navbar .navbar-nav .nav-link.active {
     color: var(--primary);
-    background: var(--dark);
+    background: var(--orangeGradient);
     border-color: var(--primary);
 }
 
@@ -145,7 +145,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--dark);
+    background: var(--orangeGradient);
     border-radius: 40px;
 }
 
@@ -199,7 +199,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--dark);
+    background: var(--orangeGradient);
     border-radius: 40px;
 }
 
@@ -305,6 +305,10 @@
 
 .modal-content {
     background: var(--redGradient);
+}
+
+thead {
+    background: var(--redDark);
 }
 
 #cardPerfil {

@@ -40,12 +40,26 @@ obtenerUsuario(<?php echo $_SESSION['user_id']?>);
                         </form>
                     </div>
 
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Edad</li>
-                        <li class="list-group-item">Genero</li>
-                        <li class="list-group-item">Nacionalidad</li>
-                        <li class="list-group-item">Fecha de Nacimiento</li>
-                    </ul>
+                    <table class="table table-striped-columns">
+                        <tbody>
+                            <tr>
+                            <tr>
+                                <td colspan="2">Edad</td>
+                                <th scope="row"></th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Genero</td>
+                                <th scope="row"></th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Nacionalidad</b></td>
+                                <th scope="row"></th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Fecha de Nacimiento</td>
+                                <th scope="row"></th>
+                        </tbody>
+                    </table>
 
                     <div class="card-body">
                         <a href="#" class="card-link">Card link</a>
@@ -124,13 +138,11 @@ obtenerUsuario(<?php echo $_SESSION['user_id']?>);
                                 </tr>
                             </tbody>
                         </table>
-
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-text" id="inputGroup-sizing-lg">Other Date</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-lg">
-                        </div>
+                        <br>
                     </div>
+                    <br>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>
