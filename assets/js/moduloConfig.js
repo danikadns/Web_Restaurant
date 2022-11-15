@@ -33,15 +33,24 @@ $('#btnActualizarPass').on('click', function () {
                     success: function (data) {
                         var resultado = data.resultado;
                         if (resultado === 1) {
-                            alert('Contraseña actualizada correctamente');
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Contraseña actualizada correctamente'
+                            })
                             cargarContenido('home.php');
                         } else {
-                            alert('No se pudo actualizar la contraseña');
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'No se pudo actualizar la contraseña'
+                            })
                         }
                     }
                 });
             } else {
-                alert('La contraseña es incorrecta');
+                Toast.fire({
+                    icon: 'success',
+                    title: 'La contraseña es incorrecta'
+                })
             }
         }
     });

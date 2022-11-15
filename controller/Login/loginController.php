@@ -11,7 +11,6 @@ $usuario = $_POST['inUsuario'];
 $clave = $_POST['inPassword'];
 
 $result = array();
-$resultado = array();
 
 $result = $loginModel->autenticar($usuario, $clave);
 
@@ -36,6 +35,7 @@ if ($row = mysqli_fetch_array($result)) {
         </script>";
     exit(-1);
 }
+
 
 /*echo "USUARIO: ".$usuario." CLAVE: ".$clave;
 echo "NOMBRES: ".$row['nombres']."APELLIDOS: ".$row['apellidos'];
