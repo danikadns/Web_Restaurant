@@ -38,6 +38,7 @@ $result = $usrClass->getUsuarios();
                             <th scope="col">NOMBRE</th>
                             <th scope="col">USERNAME</th>
                             <th scope="col">CLAVE</th>
+                            <th scope="col">ROL</th>
                             <th scope="col">ESTADO</th>
                             <th scope="col">EMAIL</th>
                             <th scope="col">TELEFONO</th>
@@ -55,6 +56,7 @@ $result = $usrClass->getUsuarios();
                             <td><?php echo $fila['nombres']." ".$fila['apellidos']; ?></td>
                             <td><?php echo $fila['usuario']; ?></td>
                             <td><?php echo $fila['password']; ?></td>
+                            <td><?php echo $fila['nombre']; ?></td>
                             <td><?php echo $fila['estado']; ?></td>
                             <td><?php echo $fila['email']; ?></td>
                             <td><?php echo $fila['telefono']; ?></td>
@@ -115,6 +117,18 @@ $result = $usrClass->getUsuarios();
                         <label for="password">Clave</label>
                     </div>
 
+                    <div class="form-floating mb-3">
+                        <form>
+                            <p>Estado</p>
+                            <input type="radio" id="administrador" name="rol_decision" value="1">
+                            <label for="active">Administrador</label><br>
+                            <input type="radio" id="cajero" name="rol_decision" value="2">
+                            <label for="inactive">Cajero</label><br>
+                            <input type="radio" id="cocinero" name="rol_decision" value="3">
+                            <label for="inactive">Cocinero</label><br>
+                        </form>
+                    </div>
+                    
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="email" placeholder="aqui va tu email">
                         <label for="email">Email</label>
@@ -179,6 +193,18 @@ $result = $usrClass->getUsuarios();
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="password_upd" placeholder="aqui va tu clave">
                         <label for="password_upd">Clave</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <form>
+                            <p>Estado</p>
+                            <input type="radio" id="administrador" name="rol_decision" value="1">
+                            <label for="active">Administrador</label><br>
+                            <input type="radio" id="cajero" name="rol_decision" value="2">
+                            <label for="inactive">Cajero</label><br>
+                            <input type="radio" id="cocinero" name="rol_decision" value="3">
+                            <label for="inactive">Cocinero</label><br>
+                        </form>
                     </div>
 
                     <div class="form-floating mb-3">

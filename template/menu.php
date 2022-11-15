@@ -24,8 +24,28 @@
                         Módulo Usuarios
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item " href="#"
-                                onclick="cargarContenido('view/Usuarios/usuariosView.php');">Usuarios</a></li>
+                        <li>
+                            <a class="dropdown-item " href="#"
+                                onclick="cargarContenido('view/Ordenes/ordenesView.php');">Ordenes</a>
+                        </li>
+                        <?php if($_SESSION['roles_id'] == 1){ ?>
+                        <li>
+                            <a class="dropdown-item " href="#"
+                                onclick="cargarContenido('view/Usuarios/usuariosView.php');">Usuarios</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item " href="#"
+                                onclick="cargarContenido('view/Roles/rolesView.php');">Roles</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item " href="#"
+                                onclick="cargarContenido('view/Usuarios/estadosView.php');">Estados</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item " href="#"
+                                onclick="cargarContenido('view/Usuarios/alimentosView.php');">Alimentos</a>
+                        </li>
+                        <?php }?>
                     </ul>
                 </li>
             </ul>
