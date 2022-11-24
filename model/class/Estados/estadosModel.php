@@ -1,18 +1,18 @@
 <?php 
 
-class rolesModel {
+class estadosModel {
 
     /**
      * Funcion para obtener el listado de usuarios
      */
-    function getRoles(){
+    function getEstados(){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
 
-        $sql = "SELECT idRole,
+        $sql = "SELECT id,
                         nombre,                                            
                         estado 
-                FROM rols ";
+                FROM estado ";
  
         $resultado = mysqli_query($conexion, $sql);
         $conexionClass->desconectar($conexion);
@@ -23,14 +23,14 @@ class rolesModel {
     /**
      * Funcion para obtener el listado de usuarios
      */
-    function getRoleById($role_id){
+    function getEstadoById($id){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
 
-        $sql = "SELECT idRole,
+        $sql = "SELECT id,
                         nombre,                                               
                         estado 
-                FROM rols where idRole = $role_id";
+                FROM estado where id = $id";
  
         $resultado = mysqli_query($conexion, $sql);
         $conexionClass->desconectar($conexion);
@@ -39,10 +39,10 @@ class rolesModel {
     /**
      * funcion para crear nuevo usuario
      */
-    function crearRol($nombre, $estado, $user_id){
+    function crearEstado($nombre, $estado, $user_id){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
-        $sql = "INSERT INTO rols
+        $sql = "INSERT INTO estado
                     (
                     nombre,
                     usuario_creacion_id,                   
@@ -71,15 +71,15 @@ class rolesModel {
      * Función para actualizar un usuario
      */
 
-    function actualizarRol($role_id, $nombre, $user_id, $estado){
+    function actualizarEstado($id, $nombre, $user_id, $estado){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
-        $sql = "UPDATE rols 
+        $sql = "UPDATE estado 
                     SET nombre = '$nombre',                                            
                         usuario_updated_id = $user_id,
                         fecha_actualizacion = now(),
                         estado = '$estado'
-                WHERE idRole = $role_id";        
+                WHERE id = $id";        
         
         $resultado = mysqli_query($conexion, $sql);
         if($resultado){
@@ -94,10 +94,10 @@ class rolesModel {
     /**
      * funcion para eliminar un usuario por su id
      */
-    function eliminarRol($role_id){
+    function eliminarEstado($id){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
-        $sql = "DELETE FROM rols WHERE idRole = $role_id";
+        $sql = "DELETE FROM estado WHERE id = $id";
         
         $resultado = mysqli_query($conexion, $sql);
         if($resultado){

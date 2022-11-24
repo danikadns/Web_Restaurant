@@ -6,23 +6,23 @@ if (!$_SESSION['user_id']) {
 
 include_once("../../model/functions.php");
 
-$rlsClass = new rolesModel();
+$estClass = new estadosModel();
 
 $result = array();
 $resultRoles = array();
-$result = $rlsClass->getRoles();
+$result = $estClass->getEstados();
 
 ?>
-<script src="assets/js/moduloRoles.js"></script>
+<script src="assets/js/moduloEstados.js"></script>
 <div class="card-responsive">
     <div class="card-header">
         <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">LISTADO DE ROLES</h1>
+            <h1 class="h2">LISTADO DE ESTADOS</h1>
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-success me-md-2" id="btnNuevoRol" name="btnNuevoRol" type="button"
-                    data-bs-toggle="modal" data-bs-target="#formNuevoRol">Nuevo Rol <svg
+                <button class="btn btn-success me-md-2" id="btnNuevoEstado" name="btnNuevoEstado" type="button"
+                    data-bs-toggle="modal" data-bs-target="#formNuevoEstado">Nuevo Estado <svg
                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-person-plus-fill" viewBox="0 0 16 16">
                         <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -53,20 +53,20 @@ $result = $rlsClass->getRoles();
                 while ($fila = mysqli_fetch_array($result)) {
                     ?>
                         <tr>
-                            <th><?php echo $fila['idRole']; ?></th>
+                            <th><?php echo $fila['id']; ?></th>
                             <td><?php echo $fila['nombre']; ?></td>
                             <td><?php echo $fila['estado']; ?></td>
                             <td>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-warning me-md-2" id="btnEditarRol"
-                                        name="btnEditarRol" type="button"
-                                        onclick="obtenerRol(<?php echo $fila['idRole']; ?>);"> Editar</button>
+                                    <button class="btn btn-warning me-md-2" id="btnEditarEstado"
+                                        name="btnEditarEstado" type="button"
+                                        onclick="obtenerEstado(<?php echo $fila['id']; ?>);"> Editar</button>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-danger me-md-2" id="btnEliminarRol"
-                                        onclick="eliminarRol(<?php echo $fila['idRole']; ?>);" name="btnEliminarRol"
+                                    <button class="btn btn-danger me-md-2" id="btnEliminarEstado"
+                                        onclick="eliminarEstado(<?php echo $fila['id']; ?>);" name="btnEliminarEstado"
                                         type="button">Eliminar</button>
                                 </div>
                             </td>
@@ -82,13 +82,13 @@ $result = $rlsClass->getRoles();
         </div>
     </div>
     <!-- AQUI INICIA ESTA EL FORMULARIO MODAL PARA AGREGAR USUARIOS -->
-    <div class="modal fade " id="formNuevoRol" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade " id="formNuevoEstado" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="formNuevoRol">Nuevo Rol</h5>
+                    <h5 class="modal-title" id="formNuevoEstado">Nuevo Estado</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -111,7 +111,7 @@ $result = $rlsClass->getRoles();
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnAgregarRol">Agregar Rol</button>
+                    <button type="button" class="btn btn-primary" id="btnAgregarRol">Agregar Estado</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                 </div>
 
@@ -120,26 +120,26 @@ $result = $rlsClass->getRoles();
     </div>
 
     <!-- AQUI ESTA EL FORMULARIO MODAL PARA ACTUALIZAR USUARIOS -->
-    <div class="modal fade" id="formActualizaRol" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="formActualizaEstado" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="formActualizaRol">Rol</h5>
+                    <h5 class="modal-title" id="formActualizaEstado">Rol</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="id_rol_upd">
-                        <label for="id_rol_upd">ID</label>
+                        <input type="text" class="form-control" id="id_estado_upd">
+                        <label for="id_estado_upd">ID</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="nombre_rol_upd" placeholder="aqui va el nombre">
-                        <label for="nombre_rol_upd">Nombre</label>
+                        <input type="text" class="form-control" id="nombre_estado_upd" placeholder="aqui va el nombre">
+                        <label for="nombre_estado_upd">Nombre</label>
                     </div>
 
                     <div class="form-floating mb-3">
@@ -154,7 +154,7 @@ $result = $rlsClass->getRoles();
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" id="btnActualizarRol">Actualizar
-                            Rol</button>
+                            Estado</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                     </div>
 
