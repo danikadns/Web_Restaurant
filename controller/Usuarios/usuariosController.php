@@ -29,6 +29,8 @@ if ($obtenerUsuario == 1) {
         $respuesta['password'] = $fila['password'];
         $respuesta['email'] = $fila['email'];
         $respuesta['telefono'] = $fila['telefono'];
+        $respuesta['roles_id'] = $fila['roles_id'];
+        $respuesta['nombreRol'] = $fila['nombre'];
     }
 
     echo json_encode($respuesta);
@@ -41,8 +43,9 @@ if ($crearUsuario == 1) {
     $password = (isset($_POST['password'])) ? $_POST['password'] : "0";
     $email = (isset($_POST['email'])) ? $_POST['email'] : "";
     $telefono = (isset($_POST['telefono'])) ? $_POST['telefono'] : "";
+    $roles_id = (isset($_POST['roles_id'])) ? $_POST['roles_id'] : "";
 
-    $result = $usrClass->crearUsuario($nombres, $apellidos, $usuario, $password, $_SESSION['user_id'], $email, $telefono, );
+    $result = $usrClass->crearUsuario($nombres, $apellidos, $usuario, $password, $_SESSION['user_id'], $email, $telefono, $roles_id);
 
     $respuesta['resultado'] = $result;
     echo json_encode($respuesta);
@@ -56,8 +59,10 @@ if ($actualizarUsuario == 1) {
     $password = (isset($_POST['password'])) ? $_POST['password'] : "0";
     $email = (isset($_POST['email'])) ? $_POST['email'] : "";
     $telefono = (isset($_POST['telefono'])) ? $_POST['telefono'] : "";
+    $roles_id = (isset($_POST['roles_id'])) ? $_POST['roles_id'] : "";
 
-    $result = $usrClass->actualizarUsuario($nombres, $apellidos, $usuario, $password, $_SESSION['user_id'], $user_id, $email, $telefono);
+
+    $result = $usrClass->actualizarUsuario($nombres, $apellidos, $usuario, $password, $_SESSION['user_id'], $user_id, $email, $telefono, $roles_id);
 
     $respuesta['resultado'] = $result;
     echo json_encode($respuesta);

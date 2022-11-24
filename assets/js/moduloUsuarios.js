@@ -32,6 +32,7 @@ $('#btnAgregarUsuario').on('click', function () {
     var apellidos = $('#apellidos').val();
     var usuario = $('#usuario').val();
     var password = $('#password').val();
+    var roles_id = document.querySelector('input[type=radio][name=rol_decision]:checked');
     var email = $('#email').val();
     var telefono = $('#telefono').val();
     var redSocial = $('#redSocial').val();
@@ -71,6 +72,15 @@ $('#btnAgregarUsuario').on('click', function () {
         return false;
     }
 
+    if (roles_id.value == "") {
+        Swal.fire({
+            icon: 'warning',
+            title: '¡Edición Incompleta!',
+            text: '!La contraseña es obligatoria!',
+        })
+        return false;
+    }
+
     if (email == "") {
         Swal.fire({
             icon: 'warning',
@@ -92,7 +102,7 @@ $('#btnAgregarUsuario').on('click', function () {
 
     $.ajax({
         type: 'POST',
-        data: "crear_usuario=1&nombres=" + nombres + "&apellidos=" + apellidos + "&usuario=" + usuario + "&password=" + password + "&email=" + email + "&telefono=" + telefono,
+        data: "crear_usuario=1&nombres=" + nombres + "&apellidos=" + apellidos + "&usuario=" + usuario + "&password=" + password + "&roles_id=" + roles_id.value + "&email=" + email + "&telefono=" + telefono,
         url: 'controller/Usuarios/usuariosController.php',
         dataType: 'json',
         success: function (data) {
@@ -127,6 +137,7 @@ $('#btnActualizarUsuario').on('click', function () {
     var apellidos = $('#apellidos_upd').val();
     var usuario = $('#usuario_upd').val();
     var password = $('#password_upd').val();
+    var roles_id = document.querySelector('input[type=radio][name=rol_decision]:checked');
     var email = $('#email_upd').val();
     var telefono = $('#telefono_upd').val();
 
@@ -165,6 +176,15 @@ $('#btnActualizarUsuario').on('click', function () {
         return false;
     }
 
+    if (roles_id == "") {
+        Swal.fire({
+            icon: 'warning',
+            title: '¡Edición Incompleta!',
+            text: '!La contraseña es obligatoria!',
+        })
+        return false;
+    }
+
     if (email == "") {
         Swal.fire({
             icon: 'warning',
@@ -185,7 +205,7 @@ $('#btnActualizarUsuario').on('click', function () {
 
     $.ajax({
         type: 'POST',
-        data: "actualizar_usuario=1&id=" + id + "&nombres=" + nombres + "&apellidos=" + apellidos + "&usuario=" + usuario + "&password=" + password + "&email=" + email + "&telefono=" + telefono,
+        data: "actualizar_usuario=1&id=" + id + "&nombres=" + nombres + "&apellidos=" + apellidos + "&usuario=" + usuario + "&password=" + password + "&roles_id=" + roles_id.value + "&email=" + email + "&telefono=" + telefono,
         url: 'controller/Usuarios/usuariosController.php',
         dataType: 'json',
         success: function (data) {

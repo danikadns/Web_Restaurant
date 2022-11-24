@@ -109,13 +109,13 @@
                     </a>
                     <hr class="dropdown-divider">
                     <a href="#" class="dropdown-item">
-                        <h6 class="fw-normal mb-0">Por agregar</h6>
-                        <small>descripcion</small>
+                        <h6 class="fw-normal mb-0">Ordenes</h6>
+                        <small>Ver estados y administrar</small>
                     </a>
-                    <hr class="dropdown-divider">
+                    <hr class="dropdown-divider" onclick="cargarContenido('view/Roles/rolesView.php');">
                     <a href="#" class="dropdown-item">
-                        <h6 class="fw-normal mb-0">Por agregar</h6>
-                        <small>descripcion</small>
+                        <h6 class="fw-normal mb-0">Roles</h6>
+                        <small>Cree, edite y elimine</small>
                     </a>
                     <hr class="dropdown-divider">
                     <a href="#" class="dropdown-item text-center">See all notifications</a>
