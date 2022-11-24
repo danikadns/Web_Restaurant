@@ -32,8 +32,11 @@
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
         $ruta = $_SESSION['ruta'];
+        $user_id = $_SESSION['user_id'];
 
-        $sql = "INSERT into images (image, created, user_id) VALUES ('$ruta', now(), '1')";
+        $sql = "UPDATE users 
+            SET image = '$ruta'
+            WHERE id = $user_id";
 
         $resultado = mysqli_query($conexion, $sql);
         $conexionClass->desconectar($conexion);

@@ -22,7 +22,9 @@ if ($row = mysqli_fetch_array($result)) {
     $_SESSION['email'] = $row['email'];
     $_SESSION['telefono'] = $row['telefono'];
     $_SESSION['red_social'] = $row['red_social'];
-    $_SESSION['ruta'] = "assets/img/imagenes/user.png";
+    $_SESSION['ruta'] = $row['image'];
+    $_SESSION['role_nombre'] = $row['nombre'];
+    $_SESSION['roles_id'] = $row['roles_id'];
 
     header("location: ../../main.php");
 
@@ -33,6 +35,7 @@ if ($row = mysqli_fetch_array($result)) {
         </script>";
     exit(-1);
 }
+
 
 /*echo "USUARIO: ".$usuario." CLAVE: ".$clave;
 echo "NOMBRES: ".$row['nombres']."APELLIDOS: ".$row['apellidos'];

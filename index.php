@@ -30,28 +30,28 @@
 
                 <div class="col-md-8 col-lg-6 col-xl-4 py-md-4 ">
 
-                    <form class="form align-items-center rounded p-4 p-sm-3" method="POST"
+                    <form class="form align-items-center rounded p-4 p-sm-4" method="POST"
                         action="controller/Login/loginController.php">
                         <div class="text-center">
                             <img class="mb-2 align-items-center " src="assets/img/logos/Login.png" width="200"
                                 height="200">
                         </div>
 
-                        <div class="divider d-flex align-items-center my-1">
+                        <div class="divider d-flex align-items-center my-1 text-white">
                             <p class="text-center fw-bold mx-1 mb-0">BIENVENIDO AL SISTEMA</p>
                         </div>
 
                         <!-- INPUT USUARIO -->
                         <div class="form-outline mb-4 align-content-center">
                             <label class="form-label" for="inUsuario">Usuario:</label>
-                            <input type="text" class="form-control form-control-lg" placeholder="Ingrese su usuario"
+                            <input type="text" class="form-control form-control-md" placeholder="Ingrese su usuario"
                                 id="inUsuario" name="inUsuario" />
                         </div>
 
                         <!-- INPUT PASSWORD -->
                         <div class="form-outline mb4">
                             <label class="form-label" for="inPassword">Password:</label>
-                            <input type="password" class="form-control form-control-lg"
+                            <input type="password" class="form-control form-control-md"
                                 placeholder="Ingrese su password" id="inPassword" name="inPassword" />
                         </div>
 
