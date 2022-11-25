@@ -4,7 +4,7 @@ if(!$_SESSION['user_id']){
     header("location: index.php");
 } 
 
-# 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 -Token-
+# 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 -Token-
 
 #IMPORTANDO EL TEMPLATE
 
@@ -38,14 +38,8 @@ include 'template/userinfo.php';
 
 <!-- INJECCIÓN DEL CONTENIDO DINAMICO  -->
 <!-- Blank Start -->
-<div class="container-fluid pt-4 px-4">
-    <div class="row bg-secondary rounded align-items-center justify-content-center mx-0">
-        <div class="col-md-9 ms-sm-auto col-lg-12 pt-4 pb-4">
-            <div class="container-fluid" id="contenedorPrincipal">
+<div class="container-fluid pt-4 px-4" id="contenedorPrincipal">
 
-            </div>
-        </div>
-    </div>
 </div>
 <!-- Blank End -->
 

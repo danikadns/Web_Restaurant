@@ -23,28 +23,8 @@
                         Módulo Usuarios
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li>
-                            <a class="dropdown-item " href="#"
-                                onclick="cargarContenido('view/Ordenes/ordenesView.php');">Ordenes</a>
-                        </li>
-                        <?php if($_SESSION['roles_id'] == 1){ ?>
-                        <li>
-                            <a class="dropdown-item " href="#"
-                                onclick="cargarContenido('view/Usuarios/usuariosView.php');">Usuarios</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item " href="#"
-                                onclick="cargarContenido('view/Roles/rolesView.php');">Roles</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item " href="#"
-                                onclick="cargarContenido('view/Usuarios/estadosView.php');">Estados</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item " href="#"
-                                onclick="cargarContenido('view/Usuarios/alimentosView.php');">Alimentos</a>
-                        </li>
-                        <?php }?>
+                        <li><a class="dropdown-item " href="#"
+                                onclick="cargarContenido('view/Usuarios/usuariosView.php');">Usuarios</a></li>
                     </ul>
                 </li>
             </ul>
@@ -85,8 +65,13 @@
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="" onclick="cargarContenido ('home.php')" class="nav-item nav-link "><i
+                <a href="#" onclick="cargarContenido ('home.php')" class="nav-item nav-link "><i
                         class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+
+                <a href="#" class="nav-item nav-link"
+                    onclick="cargarContenido('view/admin/sales/ordenCajeroView.php')"><i
+                        class="fa fa-th me-2"></i>Ordenar</a>
+
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                             class="fa fa-laptop me-2"></i>Elements</a>
@@ -96,10 +81,14 @@
                         <a href="element.html" class="dropdown-item">Other Elements</a>
                     </div>
                 </div>
-                
-                <a href="#"  onclick="cargarContenido('view/Clientes/clientesView.php')" class="nav-item nav-link"><i class="fa fa-users me-2"></i>Clientes</a>
-                <a href="#"  onclick="cargarContenido('view/Alimentos/alimentosView.php')" class="nav-item nav-link"><i class="fa fa-users me-2"></i>Alimentos</a>
-                <a href="#"  onclick="cargarContenido('view/Estados/estadosView.php')" class="nav-item nav-link"><i class="fa fa-users me-2"></i>Estados</a>
+                <a href="#" onclick="cargarContenido('view/Clientes/clientesView.php')" class="nav-item nav-link"><i
+                        class="fa fa-users me-2"></i>Clientes</a>
+                <a href="#" onclick="cargarContenido('view/Alimentos/alimentosView.php')" class="nav-item nav-link"><i
+                        class="fa fa-users me-2"></i>Alimentos</a>
+                <a href="#" onclick="cargarContenido('view/Estados/estadosView.php')" class="nav-item nav-link"><i
+                        class="fa fa-users me-2"></i>Estados</a>
+
+                <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                 <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                 <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                 <div class="nav-item dropdown">
