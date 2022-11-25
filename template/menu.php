@@ -98,6 +98,8 @@
                 </div>
                 
                 <a href="#"  onclick="cargarContenido('view/Clientes/clientesView.php')" class="nav-item nav-link"><i class="fa fa-users me-2"></i>Clientes</a>
+                <a href="#"  onclick="cargarContenido('view/Alimentos/alimentosView.php')" class="nav-item nav-link"><i class="fa fa-users me-2"></i>Alimentos</a>
+                <a href="#"  onclick="cargarContenido('view/Estados/estadosView.php')" class="nav-item nav-link"><i class="fa fa-users me-2"></i>Estados</a>
                 <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                 <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                 <div class="nav-item dropdown">

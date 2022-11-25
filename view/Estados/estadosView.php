@@ -111,7 +111,7 @@ $result = $estClass->getEstados();
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnAgregarRol">Agregar Estado</button>
+                    <button type="button" class="btn btn-primary" id="btnAgregarEstado">Agregar Estado</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                 </div>
 
@@ -126,7 +126,7 @@ $result = $estClass->getEstados();
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="formActualizaEstado">Rol</h5>
+                    <h5 class="modal-title" id="formActualizaEstado">Estado</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -153,7 +153,7 @@ $result = $estClass->getEstados();
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btnActualizarRol">Actualizar
+                        <button type="button" class="btn btn-primary" id="btnActualizarEstado">Actualizar
                             Estado</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                     </div>
