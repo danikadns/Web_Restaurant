@@ -1,7 +1,37 @@
-$('#btnAgregarEstado').on('click', function () {
+function bienvenidoUser() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: 'BIENVENIDO'
+    })
+}
+
+function loginFallido() {
+    Swal.fire(
+        '¡AUTENTICACIÓN FALLIDA!',
+        '¡Asegurese de que todo este correctamente!',
+        'question'
+    )
+}
+
+
+$('#btnAgregarCliente').on('click', function () {
 
     var nombre = $('#nombre').val();
-    var estado = document.querySelector('input[type=radio][name=estado_decision]:checked');
+    var nit= $('#nit').val();
+    var estado = $('#estado').val();
+   
 
     if (nombre == "") {
         Swal.fire({
@@ -11,33 +41,43 @@ $('#btnAgregarEstado').on('click', function () {
         })
         return false;
     }
-    if (estado == "") {
+    if (nit == "") {
         Swal.fire({
             icon: 'warning',
             title: '¡Edición Incompleta!',
-            text: '!El estado es requerido!',
+            text: '!El nit es requerido!',
         })
         return false;
     }
 
+    if (estado == "") {
+        Swal.fire({
+            icon: 'warning',
+            title: '¡Edición Incompleta!',
+            text: '!El Estado es obligatorio!',
+        })
+        return false;
+    }
+
+
     $.ajax({
         type: 'POST',
-        data: "crear_estado=1&nombre=" + nombre + "&estado=" + estado.value,
-        url: 'controller/Estados/estadosController.php',
+        data: "crear_cliente=1&nombre=" + nombre + "&nit=" + nit + "&estado=" + estado,
+        url: 'controller/Clientes/clientesController.php',
         dataType: 'json',
         success: function (data) {
             var resultado = data.resultado;
             if (resultado === 1) {
-                $('#formNuevoEstado').modal('hide');
+                $('#formNuevoCliente').modal('hide');
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
 
                 Swal.fire(
-                    '!Nuevo Estado agregado correctamente!',
-                    '!Ya puede ser asignado!',
+                    '!Nuevo Cliente agregado correctamente!',
+                    
                     'success'
                 );
-                cargarContenido('view/Estados/estadosView.php');
+                cargarContenido('view/Clientes/clientesView.php');
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -50,12 +90,12 @@ $('#btnAgregarEstado').on('click', function () {
 
 });
 
-$('#btnActualizarEstado').on('click', function () {
+$('#btnActualizaCliente').on('click', function () {
 
-    var id = $('#id_estado_upd').val();
-    var nombre = $('#nombre_estado_upd').val();
-    var estado = document.querySelector('input[type=radio][name=estado_decision]:checked');
-    
+    var id = $('#id_upd').val();
+    var nombre = $('#nombre_upd').val();
+    var nit = $('#nit_upd').val();
+    var estado = $('#estado_upd').val();
 
     if (nombre == "") {
         Swal.fire({
@@ -65,34 +105,42 @@ $('#btnActualizarEstado').on('click', function () {
         })
         return false;
     }
-
-    if (estado == "") {
+    if (nit == "") {
         Swal.fire({
             icon: 'warning',
             title: '¡Edición Incompleta!',
-            text: '!El estado es necesario!',
+            text: '!El nit es requerido!',
+        })
+        return false;
+    }
+    if (estado== "") {
+        Swal.fire({
+            icon: 'warning',
+            title: '¡Edición Incompleta!',
+            text: '!El estado es requerido!',
         })
         return false;
     }
 
+
     $.ajax({
         type: 'POST',
-        data: "actualizar_estado=1&id=" + id + "&nombre=" + nombre + "&estado=" + estado.value,
-        url: 'controller/Estados/estadosController.php',
+        data: "actualizar_cliente=1&id=" + id + "&nombre=" + nombre + "&nit=" + nit + "&estado=" + estado,
+        url: 'controller/Clientes/clientesController.php',
         dataType: 'json',
         success: function (data) {
             var resultado = data.resultado;
             if (resultado === 1) {
-                $('#formActualizaEstado').modal('hide');
+                $('#formActualizaCliente').modal('hide');
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
 
                 Swal.fire(
-                    '!Estado actualizado exitosamente!',
+                    '!Cliente actualizado exitosamente!',
                     '!Recargue la pagina!',
                     'success'
                 );
-                cargarContenido('view/Estados/estadosView.php');
+                cargarContenido('view/Clientes/clientesView.php');
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -105,27 +153,31 @@ $('#btnActualizarEstado').on('click', function () {
 
 });
 
-function obtenerEstado(id) {
+function obtenerCliente(id) {
 
     $.ajax({
         type: 'POST',
-        data: "obtener_estado=1&id=" + id,
-        url: 'controller/Estados/estadosController.php',
+        data: "obtener_cliente=1&user_id=" + id,
+        url: 'controller/Clientes/clientesController.php',
         dataType: 'json',
         success: function (data) {
             var id = data.id;
             var nombre = data.nombre;
+            var nit = data.nit;
             var estado = data.estado;
+           
+            $('#id_upd').val(id);
+            $('#nombre_upd').val(nombre);
+            $('#nit_upd').val(nit);
+            $('#estado_upd').val(estado);
+         
 
-            $('#id_estado_upd').val(id);
-            $('#nombre_estado_upd').val(nombre);
-
-            $('#formActualizaEstado').modal('show');
+            $('#formActualizaCliente').modal('show');
         }
     });
 }
 
-function eliminarEstado(id) {
+function eliminarCliente(id) {
 
     Swal.fire({
         title: '¿Estas seguro?',
@@ -140,8 +192,8 @@ function eliminarEstado(id) {
 
             $.ajax({
                 type: 'POST',
-                data: "eliminar_estado=1&id=" + id,
-                url: 'controller/Estados/estadosController.php',
+                data: "eliminar_cliente=1&user_id=" + id,
+                url: 'controller/Clientes/clientesController.php',
                 dataType: 'json',
 
                 success: function (data) {
@@ -154,7 +206,7 @@ function eliminarEstado(id) {
                             'Borrado de la base de datos',
                             'success'
                         )
-                        cargarContenido('view/Estados/estadosView.php');
+                        cargarContenido('view/Clientes/clientesView.php');
                     } else {
                         Swal.fire({
                             icon: 'error',

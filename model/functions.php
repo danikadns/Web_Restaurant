@@ -17,6 +17,7 @@ require_once("class/Configuracion/configModel.php");
 require_once("class/Configuracion/funciones.php");
 require_once("class/Roles/rolesModel.php");
 require_once("class/Estados/estadosModel.php");
-
+require_once("class/Clientes/clientesModel.php");
+require_once("class/Alimentos/alimentosModel.php");
 
 ?>
