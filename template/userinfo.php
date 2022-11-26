@@ -56,7 +56,8 @@
         </form>
         <div class="navbar-nav align-items-center ms-auto">
            
-
+            <?php if($_SESSION['user_id'] == 1){
+            ?>
             <!-- Modulo de usuarios y roles -->
             <div class="nav-item dropdown">
 
@@ -65,6 +66,7 @@
                     <span class="d-none d-lg-inline-flex">Módulo Usuarios</span>
                 </a>
 
+                
                 <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                     <a href="#" class="dropdown-item" onclick="cargarContenido('view/Usuarios/usuariosView.php');">
                         <h6 class="fw-normal mb-0">Registro de Actualización</h6>
@@ -72,8 +74,10 @@
                     </a>
                   
                  </div>
-
+                
             </div>
+            <?php
+                }?>
 
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">

@@ -331,3 +331,68 @@ thead {
 #color{
     color: white;
 }
+
+#pos-field {
+    height: 54em;
+    display: flex;
+}
+
+#menu-list {
+    width: 65%;
+    height: 100%;
+    overflow: auto;
+}
+
+#order-list {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+#cat-list {
+    height: 4em !important;
+    overflow: auto;
+    display: flex;
+}
+
+#item-list {
+    height: 40em !important;
+}
+
+#item-list.empty-data {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#item-list.empty-data:after {
+    content: 'La categoría seleccionada aún no tiene elementos disponibles.';
+    color: #b7b4b4;
+    font-size: 1.7em;
+    font-style: italic;
+}
+
+div#order-items-holder {
+    height: 38em !important;
+    overflow: auto;
+    position: relative;
+}
+
+div#order-items-header {
+    position: sticky !important;
+    top: 0;
+    z-index: 1;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
