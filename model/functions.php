@@ -19,6 +19,10 @@ require_once("class/Roles/rolesModel.php");
 require_once("class/Estados/estadosModel.php");
 require_once("class/Clientes/clientesModel.php");
 require_once("class/Alimentos/alimentosModel.php");
+<<<<<<< HEAD
+require_once("class/Categorias/categoriasModel.php");
+=======
 require_once("class/Orden/ordenModel.php");
+>>>>>>> 2d9575a0315dbc60e04ffe9b75e4eb22e5f255cf
 
 ?>

@@ -1,27 +1,10 @@
 <?php 
 
-class alimentosModel {
+class categoriasModel {
 
     /**
      * Funcion para obtener el listado de usuarios
      */
-    function getAlimentos(){
-        $conexionClass = new Tools();
-        $conexion = $conexionClass->conectar();
-
-        $sql = "SELECT a.id,
-                        a.nombre as nombre_alimento,                                            
-                        a.estado,
-                        c.nombre as nombre_categoria,
-                        a.categorias_id 
-                FROM alimentos a, categorias c
-                WHERE a.categorias_id = c.id";
- 
-        $resultado = mysqli_query($conexion, $sql);
-        $conexionClass->desconectar($conexion);
-        return $resultado;
-    }
-
     function getCategorias(){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
@@ -40,14 +23,14 @@ class alimentosModel {
     /**
      * Funcion para obtener el listado de usuarios
      */
-    function getAlimentoById($id){
+    function getCategoriaById($id){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
 
         $sql = "SELECT id,
                         nombre,                                               
                         estado 
-                FROM alimentos where id = $id";
+                FROM categorias where id = $id";
  
         $resultado = mysqli_query($conexion, $sql);
         $conexionClass->desconectar($conexion);
@@ -56,24 +39,22 @@ class alimentosModel {
     /**
      * funcion para crear nuevo usuario
      */
-    function crearAlimento($nombre, $estado, $user_id, $categoria_id){
+    function crearCategoria($nombre, $estado, $user_id){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
-        $sql = "INSERT INTO alimentos
+        $sql = "INSERT INTO categorias
                     (
                     nombre,
                     usuario_creacion_id,                   
                     fecha_creacion,                                   
-                    estado,
-                    categorias_id
+                    estado
                     )
                     VALUES
                     (
                     '$nombre',
                     $user_id,
                     now(),                     
-                    '$estado',
-                    $categoria_id
+                    '$estado'
                     )";        
 
         $resultado = mysqli_query($conexion, $sql);
@@ -90,15 +71,14 @@ class alimentosModel {
      * Función para actualizar un usuario
      */
 
-    function actualizarAlimento($id, $nombre, $user_id, $estado, $categoria_id){
+    function actualizarCategoria($id, $nombre, $user_id, $estado){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
-        $sql = "UPDATE alimentos 
+        $sql = "UPDATE categorias
                     SET nombre = '$nombre',                                            
                         usuario_updated_id = $user_id,
                         fecha_actualizacion = now(),
-                        estado = '$estado',
-                        categorias_id = $categoria_id
+                        estado = '$estado'
                 WHERE id = $id";        
         
         $resultado = mysqli_query($conexion, $sql);
@@ -114,10 +94,10 @@ class alimentosModel {
     /**
      * funcion para eliminar un usuario por su id
      */
-    function eliminarAlimento($id){
+    function eliminarCategoria($id){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
-        $sql = "DELETE FROM alimentos WHERE id = $id";
+        $sql = "DELETE FROM categorias WHERE id = $id";
         
         $resultado = mysqli_query($conexion, $sql);
         if($resultado){
