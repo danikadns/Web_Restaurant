@@ -39,7 +39,7 @@ $result = $rlsClass->getRoles();
             <div class="table-responsive">
                 <table class="table">
                     <thead>
-                        <tr>
+                        <tr id="color">
                             <th scope="col">ID</th>
                             <th scope="col">NOMBRE</th>
                             <th scope="col">ESTADO</th>
