@@ -39,7 +39,7 @@ $result = $altClass->getAlimentos();
             <div class="table-responsive">
                 <table class="table">
                     <thead>
-                        <tr>
+                        <tr id="color">
                             <th scope="col">ID</th>
                             <th scope="col">NOMBRE</th>
             

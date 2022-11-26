@@ -23,7 +23,7 @@ $result = $clienClass->getCliente();
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn btn-success me-md-2" id="btnNuevoCliente" name="btnNuevoCliente" type="button"
-                    data-bs-toggle="modal" data-bs-target="#formNuevoCliente">Nuevo Cliente
+                    data-bs-toggle="modal" data-bs-target="#formNuevoCliente" >Nuevo Cliente
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
                      <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
@@ -40,7 +40,7 @@ $result = $clienClass->getCliente();
             <div class="table-responsive">
                 <table class="table text-center" >
                     <thead>
-                        <tr>
+                        <tr id="color">
                             <th scope="col">ID</th>
                             <th scope="col">NOMBRE</th>
                             <th scope="col">NIT</th>
@@ -54,7 +54,7 @@ $result = $clienClass->getCliente();
                         <?php
                 while ($fila = mysqli_fetch_array($result)) {
                     ?>
-                        <tr class="text-center">
+                        <tr class="text-center color-text-table">
                             <th><?php echo $fila['id']; ?></th>
                             <td><?php echo $fila['nombre']; ?></td>
                             <td><?php echo $fila['nit']; ?></td>

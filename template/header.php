@@ -42,6 +42,7 @@
 <head>
     <meta charset="utf-8">
     <title>Sistema Web_Restaurant</title>
+    <link rel="icon" href="assets/img/logos/Login.ico">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
