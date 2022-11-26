@@ -7,14 +7,7 @@
     --secondary: #191C24;
     --light: #fff;
     --dark: #000000;
-}
 
-#fontcolor{
-    color: white;
-}
-
-#carOrden{
-    padding: 12px 12px 12px 10px;
 }
 
 .back-to-top {
@@ -90,7 +83,7 @@
 .content {
     margin-left: 250px;
     min-height: 100vh;
-    background: var(--dark);
+    background: var(--orangeGradient);
     transition: 0.5s;
 }
 
@@ -215,7 +208,7 @@
 }
 
 .content .navbar .dropdown-item:hover,
-.content .navbar .dropdown-item.active {
+.content .navbar .dropdown-item.zactive {
     background: var(--dark);
 }
 
@@ -323,14 +316,9 @@ thead {
 }
 
 #cardSeccion {
-    background: var(--redDark);
+    background: var(--dark);
 }
 
-.card-responsiveOrden {
-    background: var(--orangeGradient);
-}
-
-#cardOrden {
-    background: var(--orangeGradient);
-    
+#color{
+    color: white;
 }
