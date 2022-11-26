@@ -7,7 +7,14 @@
     --secondary: #191C24;
     --light: #fff;
     --dark: #000000;
+}
 
+#fontcolor{
+    color: white;
+}
+
+#carOrden{
+    padding: 12px 12px 12px 10px;
 }
 
 .back-to-top {
@@ -317,4 +324,13 @@ thead {
 
 #cardSeccion {
     background: var(--redDark);
+}
+
+.card-responsiveOrden {
+    background: var(--orangeGradient);
+}
+
+#cardOrden {
+    background: var(--orangeGradient);
+    
 }
