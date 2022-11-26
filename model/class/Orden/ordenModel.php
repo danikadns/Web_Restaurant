@@ -66,7 +66,7 @@ class ordenModel {
     /**
      * funcion para eliminar un usuario por su id
      */
-    function actEstadoOrden($id){
+    function actEstadoOrden($id, $user_id){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
         $sql = "UPDATE

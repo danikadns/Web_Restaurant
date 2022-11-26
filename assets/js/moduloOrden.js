@@ -1,5 +1,4 @@
 function DespacharOrden(id) {
-
     Swal.fire({
         title: '¿Estas seguro?',
         text: "!No podras revertir este cambio!",
@@ -7,7 +6,7 @@ function DespacharOrden(id) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, eliminar'
+        confirmButtonText: 'Si, despachar'
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
@@ -22,8 +21,7 @@ function DespacharOrden(id) {
                     if (resultado === 1) {
 
                         Swal.fire(
-                            '!Eliminado!',
-                            'Borrado de la base de datos',
+                            'Orden despachada',
                             'success'
                         )
                         cargarContenido('view/OrdenCocina/OrdenCocinaView.php');

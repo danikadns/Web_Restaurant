@@ -6,7 +6,7 @@ if (!$_SESSION['user_id']) {
 }
 
 include_once("../../model/functions.php");
-$altClass = new ordenModel();
+$ordClass = new ordenModel();
 $result = 0;
 $respuesta = array();
 
@@ -17,7 +17,7 @@ $ActEstadOrden = (isset($_POST['act_estado_orden'])) ? $_POST['act_estado_orden'
 if ($ActEstadOrden == 1) {
     $id = (isset($_POST['id'])) ? $_POST['id'] : "0";
 
-    $result = $estClass->actEstadoOrden($id);
+    $result = $ordClass->actEstadoOrden($id, $_SESSION['user_id']);
 
     $respuesta['resultado'] = $result;
     echo json_encode($respuesta);

@@ -10,6 +10,15 @@
 
 }
 
+#fontcolor{
+    color: black;
+}
+
+#carOrden{
+    padding: 12px 12px 12px 10px;
+}
+
+
 .back-to-top {
     position: fixed;
     display: none;
