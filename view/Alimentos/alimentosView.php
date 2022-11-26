@@ -47,6 +47,7 @@ $resultado2 = $altClass->getCategorias();
                             <th scope="col">ID</th>
                             <th scope="col">NOMBRE</th>
                             <th scope="col">CATEGORIA</th>
+                            <th scope="col">PRECIO</th>
             
                             <th scope="col">ESTADO</th>
                             
@@ -63,6 +64,7 @@ $resultado2 = $altClass->getCategorias();
                             <th><?php echo $fila['id']; ?></th>
                             <td><?php echo $fila['nombre_alimento']; ?></td>
                             <td><?php echo $fila['nombre_categoria']; ?></td>
+                            <td><?php echo $fila['precio']; ?></td>
                             
                             <td><?php echo $fila['estado']; ?></td>
                             
@@ -107,36 +109,42 @@ $resultado2 = $altClass->getCategorias();
                         <input type="text" class="form-control" id="nombre" placeholder="aqui va tu nombre">
                         <label for="nombres">Nombres</label>
                     </div>
-                </div>
+                
 
-                <div class="form-floating mb-3">
-                    <form>
-                        <p>Categoria</p>
-                        <?php
-                        while ($fila = mysqli_fetch_array($resultado)) {
-                        ?>
-                        <input type="radio" id="<?php echo $fila['nombre'];?>" name="categoria_decision" value="<?php echo $fila['id'];?>">
-                        <label for="<?php echo $fila['nombre'];?>"><?php echo $fila['nombre'];?></label><br>
-                        <?php
-                        }
-                        ?>
-                    </form>
-                </div>
+                    <div class="form-floating mb-3">
+                        <form>
+                            <p>Categoria</p>
+                            <?php
+                            while ($fila = mysqli_fetch_array($resultado)) {
+                            ?>
+                            <input type="radio" id="<?php echo $fila['nombre'];?>" name="categoria_decision" value="<?php echo $fila['id'];?>">
+                            <label for="<?php echo $fila['nombre'];?>"><?php echo $fila['nombre'];?></label><br>
+                            <?php
+                            }
+                            ?>
+                        </form>
+                    </div>
 
-                <div class="form-floating mb-3">
-                    <form>
-                        <p>Estado</p>
-                        <input type="radio" id="active" name="estado_decision" value="ACT">
-                        <label for="active">Active</label><br>
-                        <input type="radio" id="inactive" name="estado_decision" value="INA">
-                        <label for="inactive">Inactive</label><br>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnAgregarAlimento">Agregar Alimento</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                </div>
+                    <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="precio" placeholder="Aquí va el precio">
+                            <label for="precio">Precio</label>
+                    </div>
 
+                    <div class="form-floating mb-3">
+                        <form>
+                            <p>Estado</p>
+                            <input type="radio" id="active" name="estado_decision" value="ACT">
+                            <label for="active">Active</label><br>
+                            <input type="radio" id="inactive" name="estado_decision" value="INA">
+                            <label for="inactive">Inactive</label><br>
+                        </form>
+                    </div>
+                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btnAgregarAlimento">Agregar Alimento</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>                            
             </div>
         </div>
     </div>
@@ -176,6 +184,11 @@ $resultado2 = $altClass->getCategorias();
                             }
                             ?>
                         </form>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="precio_alimento_upd" placeholder="Aquí va el precio">
+                        <label for="precio_alimento_upd">Precio</label>
                     </div>
 
                     <div class="form-floating mb-3">

@@ -3,6 +3,7 @@ $('#btnAgregarAlimento').on('click', function () {
     var nombre = $('#nombre').val();
     var estado = document.querySelector('input[type=radio][name=estado_decision]:checked');
     var categoria = document.querySelector('input[type=radio][name=categoria_decision]:checked');
+    var precio = $('#precio').val();
 
     if (nombre == "") {
         Swal.fire({
@@ -20,10 +21,18 @@ $('#btnAgregarAlimento').on('click', function () {
         })
         return false;
     }
+    if (precio == "") {
+        Swal.fire({
+            icon: 'warning',
+            title: '¡Edición Incompleta!',
+            text: '!El precio es necesario!',
+        })
+        return false;
+    }
 
     $.ajax({
         type: 'POST',
-        data: "crear_alimento=1&nombre=" + nombre + "&estado=" + estado.value + "&categoria=" + categoria.value,
+        data: "crear_alimento=1&nombre=" + nombre + "&estado=" + estado.value + "&categoria=" + categoria.value + "&precio=" + precio,
         url: 'controller/Alimentos/alimentosController.php',
         dataType: 'json',
         success: function (data) {
@@ -57,6 +66,7 @@ $('#btnActualizarAlimento').on('click', function () {
     var nombre = $('#nombre_alimento_upd').val();
     var estado = document.querySelector('input[type=radio][name=estado_decision]:checked');
     var categoria = document.querySelector('input[type=radio][name=categoria_decision]:checked');
+    var precio = $('#precio_alimento_upd').val();
     
 
     if (nombre == "") {
@@ -84,10 +94,18 @@ $('#btnActualizarAlimento').on('click', function () {
         })
         return false;
     }
+    if (precio == "") {
+        Swal.fire({
+            icon: 'warning',
+            title: '¡Edición Incompleta!',
+            text: '!La categoria es necesario!',
+        })
+        return false;
+    }
 
     $.ajax({
         type: 'POST',
-        data: "actualizar_alimento=1&id=" + id + "&nombre=" + nombre + "&estado=" + estado.value + "&categoria=" + categoria.value,
+        data: "actualizar_alimento=1&id=" + id + "&nombre=" + nombre + "&estado=" + estado.value + "&categoria=" + categoria.value + "&precio=" + precio,
         url: 'controller/Alimentos/alimentosController.php',
         dataType: 'json',
         success: function (data) {
@@ -126,9 +144,11 @@ function obtenerAlimento(id) {
             var id = data.id;
             var nombre = data.nombre;
             var estado = data.estado;
+            var precio = data.precio;
 
             $('#id_alimento_upd').val(id);
             $('#nombre_alimento_upd').val(nombre);
+            $('#precio_alimento_upd').val(precio);
 
             $('#formActualizaAlimento').modal('show');
         }

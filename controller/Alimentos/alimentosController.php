@@ -25,6 +25,7 @@ if ($obtenerAlimento == 1) {
         $respuesta['id'] = $fila['id'];
         $respuesta['nombre'] = $fila['nombre'];
         $respuesta['estado'] = $fila['estado'];
+        $respuesta['precio'] = $fila['precio'];
     }
 
     echo json_encode($respuesta);
@@ -34,8 +35,10 @@ if ($crearAlimento == 1) {
     $nombre = (isset($_POST['nombre'])) ? $_POST['nombre'] : "0";
     $estado = (isset($_POST['estado'])) ? $_POST['estado'] : "0";
     $categoria = (isset($_POST['categoria'])) ? $_POST['categoria'] : "0";
+    $precio = (isset($_POST['precio'])) ? $_POST['precio'] : "0";
+    
 
-    $result = $altClass->crearAlimento($nombre, $estado, $_SESSION['user_id'], $categoria);
+    $result = $altClass->crearAlimento($nombre, $estado, $_SESSION['user_id'], $categoria, $precio);
 
     $respuesta['resultado'] = $result;
     echo json_encode($respuesta);
@@ -46,8 +49,9 @@ if ($actualizarAlimento == 1) {
     $nombre = (isset($_POST['nombre'])) ? $_POST['nombre'] : "0";
     $estado = (isset($_POST['estado'])) ? $_POST['estado'] : "0";
     $categoria = (isset($_POST['categoria'])) ? $_POST['categoria'] : "0";
+    $precio = (isset($_POST['precio'])) ? $_POST['precio'] : "0";
 
-    $result = $altClass->actualizarAlimento($id_upd, $nombre, $_SESSION['user_id'], $estado, $categoria);
+    $result = $altClass->actualizarAlimento($id_upd, $nombre, $_SESSION['user_id'], $estado, $categoria, $precio);
 
     $respuesta['resultado'] = $result;
     echo json_encode($respuesta);
