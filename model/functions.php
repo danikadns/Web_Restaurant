@@ -21,5 +21,4 @@ require_once("class/Clientes/clientesModel.php");
 require_once("class/Alimentos/alimentosModel.php");
 require_once("class/Categorias/categoriasModel.php");
 require_once("class/Orden/ordenModel.php");
-
 ?>

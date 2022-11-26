@@ -13,7 +13,8 @@ class alimentosModel {
                         a.nombre as nombre_alimento,                                            
                         a.estado,
                         c.nombre as nombre_categoria,
-                        a.categorias_id 
+                        a.categorias_id,
+                        a.precio 
                 FROM alimentos a, categorias c
                 WHERE a.categorias_id = c.id";
  
@@ -46,7 +47,8 @@ class alimentosModel {
 
         $sql = "SELECT id,
                         nombre,                                               
-                        estado 
+                        estado,
+                        precio 
                 FROM alimentos where id = $id";
  
         $resultado = mysqli_query($conexion, $sql);
@@ -56,7 +58,7 @@ class alimentosModel {
     /**
      * funcion para crear nuevo usuario
      */
-    function crearAlimento($nombre, $estado, $user_id, $categoria_id){
+    function crearAlimento($nombre, $estado, $user_id, $categoria_id, $precio){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
         $sql = "INSERT INTO alimentos
@@ -65,7 +67,8 @@ class alimentosModel {
                     usuario_creacion_id,                   
                     fecha_creacion,                                   
                     estado,
-                    categorias_id
+                    categorias_id,
+                    precio
                     )
                     VALUES
                     (
@@ -73,7 +76,8 @@ class alimentosModel {
                     $user_id,
                     now(),                     
                     '$estado',
-                    $categoria_id
+                    $categoria_id,
+                    $precio
                     )";        
 
         $resultado = mysqli_query($conexion, $sql);
@@ -90,7 +94,7 @@ class alimentosModel {
      * Función para actualizar un usuario
      */
 
-    function actualizarAlimento($id, $nombre, $user_id, $estado, $categoria_id){
+    function actualizarAlimento($id, $nombre, $user_id, $estado, $categoria_id, $precio){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
         $sql = "UPDATE alimentos 
@@ -98,7 +102,8 @@ class alimentosModel {
                         usuario_updated_id = $user_id,
                         fecha_actualizacion = now(),
                         estado = '$estado',
-                        categorias_id = $categoria_id
+                        categorias_id = $categoria_id,
+                        precio = $precio
                 WHERE id = $id";        
         
         $resultado = mysqli_query($conexion, $sql);
