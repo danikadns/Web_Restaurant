@@ -69,10 +69,15 @@
                 <a href="#" onclick="cargarContenido ('home.php')" class="nav-item nav-link ">
                 <i class="bi bi-house-door-fill me-2"></i> Inicio</a>
 
+                <?php if($_SESSION['roles_id'] == 1 || $_SESSION['roles_id'] == 2){
+                ?>
                 <a href="#" class="nav-item nav-link"
                     onclick="cargarContenido('view/admin/sales/ordenCajeroView.php')">
                     <i class="bi bi-pencil-square"></i>Ordenar
                 </a>
+                <?php } ?>
+                <?php if($_SESSION['roles_id'] == 1){
+                ?>
                 <a href="#" class="nav-item nav-link"
                 onclick="cargarContenido('view/Alimentos/alimentosView.php')" class="nav-item nav-link">
                     <i class="fa-sharp fa-solid fa-bowl-food"></i> Alimentos
@@ -82,13 +87,15 @@
            
                 <a href="#" onclick="cargarContenido('view/Estados/estadosView.php')" class="nav-item nav-link">
                 <i class="fa-solid fa-rotate me-2"></i>Estados</a>
-
+                <?php }?>
                 <a href="#" onclick="cargarContenido('view/OrdenCocina/OrdenCocinaView.php')" class="nav-item nav-link">
                 <i class="far fa-file-alt me-2"></i> Órdenes</a>
 
+                <?php if($_SESSION['roles_id'] == 1){
+                ?>
                 <a href="#" onclick="cargarContenido('view/Roles/rolesView.php')" class="nav-item nav-link">
                 <i class="fa-sharp fa-solid fa-people-arrows me-2"></i>Roles</a>
-
+                <?php }?>
               
                 
             </div>

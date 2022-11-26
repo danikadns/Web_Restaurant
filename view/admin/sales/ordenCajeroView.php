@@ -4,77 +4,16 @@ if (!$_SESSION['user_id']) {
     header("location: ../../index.php");
 }
 
-include_once("../../model/functions.php");
+include_once("../../../model/functions.php");
 
-
+$altClass = new alimentosModel();
+$ordClass = new ordenModel();
+$result = array();
+$result = $altClass->getAlimentos();
+$resultado2 = array();
+$resultado2 = $ordClass->getUsuarios();
 ?>
-
-<style>
-#pos-field {
-    height: 54em;
-    display: flex;
-}
-
-#menu-list {
-    width: 65%;
-    height: 100%;
-    overflow: auto;
-}
-
-#order-list {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-}
-
-#cat-list {
-    height: 4em !important;
-    overflow: auto;
-    display: flex;
-}
-
-#item-list {
-    height: 40em !important;
-}
-
-#item-list.empty-data {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}
-
-#item-list.empty-data:after {
-    content: 'La categoría seleccionada aún no tiene elementos disponibles.';
-    color: #b7b4b4;
-    font-size: 1.7em;
-    font-style: italic;
-}
-
-div#order-items-holder {
-    height: 38em !important;
-    overflow: auto;
-    position: relative;
-}
-
-div#order-items-header {
-    position: sticky !important;
-    top: 0;
-    z-index: 1;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
-}
-</style>
+<script src="assets/js/moduloOrden.js"></script>
 
 <!-- Titulo de Contenido -->
 <div class="row bg-secondary rounded align-items-center justify-content-center mx-0 pt-4 pb-2 mb-3">
@@ -101,47 +40,46 @@ input[type=number] {
                 <div class="card-body p-4">
 
                     <div class="row g-4">
-                        <div class="col-12 col-sm-4 col-md-4">
+                        <?php
+                        while($fila = mysqli_fetch_array($result)){
+                        ?>
+                            <div class="col-12 col-sm-4 col-md-4">
 
-                            <div class="m-n2">
-                                <button type="button" class="btn btn-outline-primary m-2"><i class="fa fa-cutlery"></i>
-                                    Menu #1</button>
+                                <div class="m-n2">
+                                    <button type="button" class="btn btn-outline-primary m-2 item-btn" data-id='<?php echo $fila['id'];?>' data-price='<?php echo $fila['precio'];?>'><i class="fa fa-cutlery"></i>
+                                        <?php echo $fila['nombre_alimento'];?></button>
+                                </div>
+
                             </div>
 
-                        </div>
+                        <?php
+                        }?>
 
-                        <!-- /.col -->
-                        <div class="col-12 col-sm-4 col-md-4">
-
-                            <div class="m-n2">
-                                <button type="button" class="btn btn-outline-primary m-2"><i
-                                        class="fa fa-cutlery me-2"></i>Menu #2</button>
-                            </div>
-
-                        </div>
-
-                        <!-- /.col -->
-                        <div class="col-12 col-sm-4 col-md-4">
-
-                            <div class="m-n2">
-                                <button type="button" class="btn btn-outline-primary m-2"><i
-                                        class="fa fa-cutlery me-2"></i>Menu #3</button>
-                            </div>
-
-                        </div>
-
-                        <!-- /.col -->
-                        <div class="col-12 col-sm-4 col-md-4">
-
-                            <div class="m-n2">
-                                <button type="button" class="btn btn-outline-primary m-2"><i
-                                        class="fa fa-cutlery me-2"></i>Menu #4</button>
-                            </div>
-
-                        </div>
+                        
 
                     </div>
-
+                    <input type="text" class="form-control" id="nit" placeholder="NIT">
+                    
+                    <input type="hidden" name="id_cliente" id="id_cliente" value="">
+                    <input type="hidden" name="nombre_cliente" id="nombre_cliente" value="">
+                    <input type="hidden" name="id_alimento" id="id_alimento" value="">
+                    <button id="Buscar_Cliente" onclick="obtenerCliente();">Buscar</button>
+                    <br>
+                    <input type="text" class="form-control" id="observaciones" placeholder="Observaciones">
+                    <br>
+                    
+                        <form>
+                            <p>Asignar Cocinero</p>
+                            <?php
+                            while ($fila = mysqli_fetch_array($resultado2)) {
+                            ?>
+                            <input type="radio" id="<?php echo $fila['nombres'];?>" name="usuario_decision" value="<?php echo $fila['id'];?>">
+                            <label for="<?php echo $fila['nombres'];?>"><?php echo $fila['nombres'];?></label><br>
+                            <?php
+                            }
+                            ?>
+                        </form>
+                    
                 </div>
 
             </div>
@@ -154,7 +92,18 @@ input[type=number] {
 
                 <!-- comienzo de Facturación -->
                 <div id="order-list" class="bg-orange bg-gradient p-1">
-                    <h3 class="fw-bolder text-center fst-italic text-light">ORDENES</h3>
+                    <div align="right">
+                        <button class="btn btn-success me-md-2" id="btnNuevoCliente" name="btnNuevoCliente" type="button"
+                            data-bs-toggle="modal" data-bs-target="#formNuevoCliente" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                            </svg>
+                        </button>
+                        <h3 class="fw-bolder text-center fst-italic text-light">ORDENES</h3>
+                    </div>
+                    
+                    
                     <div id="order-items-holder" class="bg-light bg-gradient mb-3">
                         <div id="order-items-header">
                             <div class="d-flex w-100 bg-primary bg-gradient">
@@ -181,6 +130,7 @@ input[type=number] {
                         <h3 class="col-7 mb-0 bg-light bg-gradient rounded-0 text-end" id="change">0.00</h3>
                     </div>
                 </div>
+                <button id="btnGenOrden">Generar Orden</button>
                 <!-- Fin de Facturación -->
 
             </div>
@@ -216,6 +166,46 @@ input[type=number] {
     </div>
 </noscript>
 
+<div class="modal fade " id="formNuevoCliente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formNuevoCliente">Nuevo Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                    
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="nombre" placeholder="aqui va tu nombre">
+                        <label for="nombre">Nombre</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="nit" placeholder="aqui va el nit">
+                        <label for="nit">Nit</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="estado" placeholder="Estado">
+                        <label for="estado">Estado</label>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnAgregarCliente">Agregar Cliente</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+    </div>
+</div>
+
 <script>
 function calc_total() {
     var gt = 0;
@@ -234,6 +224,7 @@ function calc_total() {
         }))
     })
     $('[name="total_amount"]').val(gt).trigger('change')
+    
     $('#grand_total').text(parseFloat(gt).toLocaleString('en-US', {
         style: 'decimal',
         minimumFractionDigits: 2,
@@ -286,6 +277,7 @@ $(function() {
         }
         item.attr('data-id', id)
         item.find('input[name="menu_id[]"]').val(id)
+        $('#id_alimento').val(id)
         item.find('input[name="price[]"]').val(price)
         item.find('.menu_name').text(name)
         item.find('.menu_price').text("x " + (parseFloat(price).toLocaleString('en-US', {

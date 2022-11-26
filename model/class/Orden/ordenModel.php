@@ -63,6 +63,35 @@ class ordenModel {
         return $resultado;
     }
 
+    function getClienteByNit($nit){
+        $conexionClass = new Tools();
+        $conexion = $conexionClass->conectar();
+
+        $sql = "SELECT  id,
+                        nombre,
+                        nit,                                                                  
+                        estado
+                FROM cliente where nit = $nit";
+ 
+        $resultado = mysqli_query($conexion, $sql);
+        $conexionClass->desconectar($conexion);
+        return $resultado;
+    }
+
+    function getUsuarios(){
+        $conexionClass = new Tools();
+        $conexion = $conexionClass->conectar();
+
+        $sql = "SELECT id,
+                        nombres,                                            
+                        estado 
+                FROM users where roles_id = 3";
+ 
+        $resultado = mysqli_query($conexion, $sql);
+        $conexionClass->desconectar($conexion);
+        return $resultado;
+    }
+
     /**
      * funcion para eliminar un usuario por su id
      */
@@ -142,22 +171,30 @@ class ordenModel {
     /**
      * funcion para crear nuevo usuario
      */
-    function crearEstado($nombre, $estado, $user_id){
+    function crearOrden($cliente, $alimento, $usuario, $observaciones, $user_id){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
-        $sql = "INSERT INTO estado
+        $sql = "INSERT INTO orden
                     (
-                    nombre,
+                    observaciones,
                     usuario_creacion_id,                   
                     fecha_creacion,                                   
-                    estado
+                    estado,
+                    estado_orden_id,
+                    alimento_id,
+                    users_id,
+                    cliente_id
                     )
                     VALUES
                     (
-                    '$nombre',
+                    '$observaciones',
                     $user_id,
                     now(),                     
-                    '$estado'
+                    'ACT',
+                    2,
+                    $alimento,
+                    $usuario,
+                    $cliente
                     )";        
 
         $resultado = mysqli_query($conexion, $sql);
