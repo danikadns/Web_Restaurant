@@ -1,14 +1,3 @@
-<?php
-session_start();
-if (!$_SESSION['user_id']) {
-    header("location: ../../index.php");
-}
-
-include_once("../../model/functions.php");
-
-
-?>
-
 <style>
 #pos-field {
     height: 54em;
@@ -16,7 +5,7 @@ include_once("../../model/functions.php");
 }
 
 #menu-list {
-    width: 65%;
+    width: 100%;
     height: 100%;
     overflow: auto;
 }
@@ -76,6 +65,26 @@ input[type=number] {
 }
 </style>
 
+<?php
+session_start();
+if (!$_SESSION['user_id']) {
+    header("location: ../../index.php");
+}
+
+include_once("../../model/functions.php");
+
+$newCategoria = new categoriasModel();
+$newAlimento = new alimentosModel();
+
+$result = array();
+$result2 = array();
+
+$result = $newCategoria->getCategorias();
+
+$result2 = $newAlimento->getAlimentos();
+
+?>
+
 <!-- Titulo de Contenido -->
 <div class="row bg-secondary rounded align-items-center justify-content-center mx-0 pt-4 pb-2 mb-3">
     <div class="col-md-9 ms-sm-auto col-lg-12 pb-2 bt-3">
@@ -92,103 +101,127 @@ input[type=number] {
     <div class="row">
 
 
-        <div class="col-6">
-            <div class="card bg-secondary rounded h-100 p-3">
-                <div class="card-header">
-                    <h3 class="font-weight-bolder text-light">CATEGORIAS</h3>
-                </div>
+        <form action="" id="sales-form">
+            <input type="hidden" name="total_amount" value="0">
+            <!-- Categorias -->
+            <div class="col-6">
+                <div class="card bg-secondary rounded h-100 p-3">
+                    <div class="card-header">
+                        <h3 class="font-weight-bolder text-light">CATEGORIAS</h3>
+                    </div>
 
-                <div class="card-body p-4">
+                    <div class="card-body p-4">
 
-                    <div class="row g-4">
-                        <div class="col-12 col-sm-4 col-md-4">
+                        <div class="row g-4">
 
-                            <div class="m-n2">
-                                <button type="button" class="btn btn-outline-primary m-2"><i class="fa fa-cutlery"></i>
-                                    Menu #1</button>
+                            <?php
+                        $cid = '';
+                while ($fila = mysqli_fetch_array($result)) {
+                        $cid = $fila['id'];
+                    ?>
+                            <!-- /.col -->
+                            <div class="col-12 col-sm-4 col-md-4">
+                                <div class="m-n2">
+                                    <button type="button" data-id="<?php $fila[
+                                            'id'
+                                    ]; ?>" class="btn btn-outline-primary m-2"><i
+                                            class="fa fa-cutlery me-2"></i><?php echo $fila['nombre']; ?></button>
+                                </div>
+
                             </div>
+
+                            <?php
+                }?>
 
                         </div>
 
-                        <!-- /.col -->
-                        <div class="col-12 col-sm-4 col-md-4">
+                    </div>
 
-                            <div class="m-n2">
-                                <button type="button" class="btn btn-outline-primary m-2"><i
-                                        class="fa fa-cutlery me-2"></i>Menu #2</button>
-                            </div>
+                    <!-- Alimentos o Menu -->
+                    <div class="card-header">
+                        <h3 class="font-weight-bolder text-light">ALIMENTOS</h3>
+                    </div>
 
-                        </div>
+                    <div class="card-body p-4">
 
-                        <!-- /.col -->
-                        <div class="col-12 col-sm-4 col-md-4">
+                        <div class="row g-4">
 
-                            <div class="m-n2">
-                                <button type="button" class="btn btn-outline-primary m-2"><i
-                                        class="fa fa-cutlery me-2"></i>Menu #3</button>
-                            </div>
+                            <?php
+                while ($fila = mysqli_fetch_array($result2)) {
+                    ?>
+                            <div class="col <?php= isset($cid) && $cid == $fila['categorias_id']
+                        ? ''
+                        : 'd-none' ?> menu-item" data-cat-id='<?php $fila['categorias_id'] ?>'>
+                                <!-- /.col -->
+                                <div class="col-12 col-sm-4 col-md-4">
+                                    <div class="m-n2">
+                                        <button type="button" data-id="<?php $fila[
+                                            'id'
+                                    ]; ?>" data-price='<?php $fila['precio']?>' class="btn btn-outline-primary m-2"><i
+                                                class="fa fa-cutlery me-2"></i> <?php echo $fila['nombre_alimento']; ?>
+                                        </button>
+                                    </div>
 
-                        </div>
+                                </div>
 
-                        <!-- /.col -->
-                        <div class="col-12 col-sm-4 col-md-4">
+                                <?php
+                }?>
 
-                            <div class="m-n2">
-                                <button type="button" class="btn btn-outline-primary m-2"><i
-                                        class="fa fa-cutlery me-2"></i>Menu #4</button>
                             </div>
 
                         </div>
 
                     </div>
 
-                </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Observaciones" aria-label="Observaciones"
+                            aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Enviar a
+                            Cocina</button>
+                    </div>
 
+                </div>
             </div>
-        </div>
+            <!-- comienzo de Facturación -->
+            <div class="col-6">
+                <div class="card bg-secondary rounded h-100 p-4">
 
-
-        <!-- comienzo de Facturación -->
-        <div class="col-6">
-            <div class="card bg-secondary rounded h-100 p-4">
-
-                <!-- comienzo de Facturación -->
-                <div id="order-list" class="bg-orange bg-gradient p-1">
-                    <h3 class="fw-bolder text-center fst-italic text-light">ORDENES</h3>
-                    <div id="order-items-holder" class="bg-light bg-gradient mb-3">
-                        <div id="order-items-header">
-                            <div class="d-flex w-100 bg-primary bg-gradient">
-                                <div class="col-3 text-center text-white fw-bolder m-0 border">Cantidad</div>
-                                <div class="col-6 text-center text-white fw-bolder m-0 border">Menú</div>
-                                <div class="col-3 text-center text-white fw-bolder m-0 border">Total</div>
+                    <div id="order-list" class="bg-orange bg-gradient p-1">
+                        <h3 class="fw-bolder text-center fst-italic text-light">ORDENES</h3>
+                        <div id="order-items-holder" class="bg-light bg-gradient mb-3">
+                            <div id="order-items-header">
+                                <div class="d-flex w-100 bg-primary bg-gradient">
+                                    <div class="col-3 text-center text-white fw-bolder m-0 border">Cantidad</div>
+                                    <div class="col-6 text-center text-white fw-bolder m-0 border">Menú</div>
+                                    <div class="col-3 text-center text-white fw-bolder m-0 border">Total</div>
+                                </div>
                             </div>
+                            <div id="order-items-body"></div>
                         </div>
-                        <div id="order-items-body"></div>
+                        <div class="d-flex w-100 mb-2">
+                            <h3 class="col-5 mb-0">Total</h3>
+                            <h3 class="col-7 mb-0 bg-light bg-gradient rounded-0 text-end" id="grand_total">0.00
+                            </h3>
+                        </div>
+                        <div class="d-flex w-100 mb-2">
+                            <h3 class="col-5 mb-0">Pagado</h3>
+                            <h3 class="col-7 mb-0 bg-light bg-gradient rounded-0 text-end px-0"><input type="number"
+                                    step="any" name="tendered_amount"
+                                    class="form-control rounded-0 text-end bg-white bg-white font-weight-bolder"
+                                    style="font-size:1em" required value="0"></h3>
+                        </div>
+                        <div class="d-flex w-100 mb-2">
+                            <h3 class="col-5 mb-0">Cambio</h3>
+                            <h3 class="col-7 mb-0 bg-light bg-gradient rounded-0 text-end" id="change">0.00</h3>
+                        </div>
                     </div>
-                    <div class="d-flex w-100 mb-2">
-                        <h3 class="col-5 mb-0">Total</h3>
-                        <h3 class="col-7 mb-0 bg-light bg-gradient rounded-0 text-end" id="grand_total">0.00</h3>
-                    </div>
-                    <div class="d-flex w-100 mb-2">
-                        <h3 class="col-5 mb-0">Pagado</h3>
-                        <h3 class="col-7 mb-0 bg-light bg-gradient rounded-0 text-end px-0"><input type="number"
-                                step="any" name="tendered_amount"
-                                class="form-control rounded-0 text-end bg-white bg-white font-weight-bolder"
-                                style="font-size:1em" required value="0"></h3>
-                    </div>
-                    <div class="d-flex w-100 mb-2">
-                        <h3 class="col-5 mb-0">Cambio</h3>
-                        <h3 class="col-7 mb-0 bg-light bg-gradient rounded-0 text-end" id="change">0.00</h3>
-                    </div>
-                </div>
-                <!-- Fin de Facturación -->
-
-            </div>
-
-        </div>
+        </form>
     </div>
-</div>
 
+</div>
+<!-- Fin de Facturación -->
+</div>
+</div>
 <noscript id="item-clone">
     <div class="d-flex w-100 bg-gradient-light product-item">
         <div class="col-3 text-center font-weight-bolder m-0 border align-middle">
@@ -361,9 +394,12 @@ $(function() {
                     // location.reload()
                     setTimeout(() => {
                         var nw = window.open(_base_url_ +
-                            "admin/sales/receipt.php?id=" + resp.oid, '_blank',
-                            "width=" + ($(window).width() * .8) + ",left=" + ($(
-                                window).width() * .1) + ",height=" + ($(window)
+                            "admin/sales/receipt.php?id=" + resp.oid,
+                            '_blank',
+                            "width=" + ($(window).width() * .8) + ",left=" +
+                            ($(
+                                window).width() * .1) + ",height=" + ($(
+                                    window)
                                 .height() * .8) + ",top=" + ($(window)
                                 .height() * .1))
                         setTimeout(() => {

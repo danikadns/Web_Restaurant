@@ -67,30 +67,29 @@
             </div>
             <div class="navbar-nav w-100">
                 <a href="#" onclick="cargarContenido ('home.php')" class="nav-item nav-link ">
-                <i class="bi bi-house-door-fill me-2"></i> Inicio</a>
+                    <i class="bi bi-house-door-fill me-2"></i> Inicio</a>
 
-                <a href="#" class="nav-item nav-link"
-                    onclick="cargarContenido('view/admin/sales/ordenCajeroView.php')">
+                <a href="#" class="nav-item nav-link" onclick="cargarContenido('view/OrdenCajero/ordenCajeroView.php')">
                     <i class="bi bi-pencil-square"></i>Ordenar
                 </a>
-                <a href="#" class="nav-item nav-link"
-                onclick="cargarContenido('view/Alimentos/alimentosView.php')" class="nav-item nav-link">
+                <a href="#" class="nav-item nav-link" onclick="cargarContenido('view/Alimentos/alimentosView.php')"
+                    class="nav-item nav-link">
                     <i class="fa-sharp fa-solid fa-bowl-food"></i> Alimentos
                 </a>
                 <a href="#" onclick="cargarContenido('view/Clientes/clientesView.php')" class="nav-item nav-link">
-                <i class="fa fa-users me-2"></i>Clientes</a>
-           
+                    <i class="fa fa-users me-2"></i>Clientes</a>
+
                 <a href="#" onclick="cargarContenido('view/Estados/estadosView.php')" class="nav-item nav-link">
-                <i class="fa-solid fa-rotate me-2"></i>Estados</a>
+                    <i class="fa-solid fa-rotate me-2"></i>Estados</a>
 
                 <a href="#" onclick="cargarContenido('view/OrdenCocina/OrdenCocinaView.php')" class="nav-item nav-link">
-                <i class="far fa-file-alt me-2"></i> Órdenes</a>
+                    <i class="far fa-file-alt me-2"></i> Órdenes</a>
 
                 <a href="#" onclick="cargarContenido('view/Roles/rolesView.php')" class="nav-item nav-link">
-                <i class="fa-sharp fa-solid fa-people-arrows me-2"></i>Roles</a>
+                    <i class="fa-sharp fa-solid fa-people-arrows me-2"></i>Roles</a>
 
-              
-                
+
+
             </div>
         </nav>
     </div>
