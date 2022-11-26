@@ -41,9 +41,9 @@ function DespacharOrden(id) {
 $('#btnAgregarCliente').on('click', function () {
 
     var nombre = $('#nombre').val();
-    var nit= $('#nit').val();
+    var nit = $('#nit').val();
     var estado = $('#estado').val();
-   
+
 
     if (nombre == "") {
         Swal.fire({
@@ -86,7 +86,7 @@ $('#btnAgregarCliente').on('click', function () {
 
                 Swal.fire(
                     '!Nuevo Cliente agregado correctamente!',
-                    
+                    '!Ya puede iniciar sesion!',
                     'success'
                 );
                 cargarContenido('view/admin/sales/ordenCajeroView.php');
@@ -103,7 +103,7 @@ $('#btnAgregarCliente').on('click', function () {
 });
 
 function obtenerCliente() {
-    var nit = $('#nit').val();
+    var nit = $('#nit_orden').val();
     $.ajax({
         type: 'POST',
         data: "obtener_cliente=1&nit=" + nit,
@@ -114,25 +114,25 @@ function obtenerCliente() {
             var nombre = data.nombre;
             var nit = data.nit;
             var estado = data.estado;
-           
+
             $('#id_cliente').val(id);
             $('#nombre_cliente').val(nombre);
             $('#nit').val(nit);
 
-            if(id != null){
+            if (id != null) {
                 Swal.fire(
                     '!Cliente encontrado correctamente!',
-                    
+                    '!Puede proceder!',
                     'success'
                 );
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Cliente no encontrado',
-                    
+
                 })
             }
-            
+
         }
     });
 }
@@ -178,7 +178,7 @@ $('#btnGenOrden').on('click', function () {
             if (resultado === 1) {
                 Swal.fire(
                     '!Nueva Orden agregada correctamente!',
-                    
+                    '!Espere por el pedido!',
                     'success'
                 );
                 cargarContenido('view/admin/sales/ordenCajeroView.php');

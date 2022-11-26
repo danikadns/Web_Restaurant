@@ -39,47 +39,60 @@ $resultado2 = $ordClass->getUsuarios();
 
                 <div class="card-body p-4">
 
-                    <div class="row g-4">
+                    <div class="row g-4 text-center align-items-center ">
                         <?php
                         while($fila = mysqli_fetch_array($result)){
                         ?>
-                            <div class="col-12 col-sm-4 col-md-4">
+                        <div class="col-12 col-sm-4 col-md-4">
 
-                                <div class="m-n2">
-                                    <button type="button" class="btn btn-outline-primary m-2 item-btn" data-id='<?php echo $fila['id'];?>' data-price='<?php echo $fila['precio'];?>'><i class="fa fa-cutlery"></i>
-                                        <?php echo $fila['nombre_alimento'];?></button>
-                                </div>
-
+                            <div class="m-n2">
+                                <button type="button" class="btn btn-outline-primary m-2 item-btn"
+                                    data-id='<?php echo $fila['id'];?>' data-price='<?php echo $fila['precio'];?>'><i
+                                        class="fa fa-cutlery"></i>
+                                    <?php echo $fila['nombre_alimento'];?></button>
                             </div>
+
+                        </div>
 
                         <?php
                         }?>
 
-                        
+
 
                     </div>
-                    <input type="text" class="form-control" id="nit" placeholder="NIT">
-                    
-                    <input type="hidden" name="id_cliente" id="id_cliente" value="">
-                    <input type="hidden" name="nombre_cliente" id="nombre_cliente" value="">
-                    <input type="hidden" name="id_alimento" id="id_alimento" value="">
-                    <button id="Buscar_Cliente" onclick="obtenerCliente();">Buscar</button>
-                    <br>
-                    <input type="text" class="form-control" id="observaciones" placeholder="Observaciones">
-                    <br>
-                    
-                        <form>
-                            <p>Asignar Cocinero</p>
-                            <?php
+                    <div class="row g-4 p-4">
+
+                        <div class="input-group mb-3">
+                            <button class="btn btn-outline-warning" type="button" onclick="obtenerCliente();"
+                                id="Buscar_Cliente">Buscar</button>
+                            <input type="text" class="form-control text-white bg-transparent bg-gradient" id="nit_orden"
+                                placeholder="NIT" aria-label="Example text with button addon"
+                                aria-describedby="button-addon1">
+                        </div>
+
+                        <!-- <input type="text" class="form-control" id="nit" placeholder="NIT"> -->
+
+                        <input type="hidden" name="id_cliente" id="id_cliente" value="">
+                        <input type="hidden" name="nombre_cliente" id="nombre_cliente" value="">
+                        <input type="hidden" name="id_alimento" id="id_alimento" value="">
+
+                        <input type="text" class="form-control text-white bg-body bg-gradient" id="observaciones"
+                            placeholder="Observaciones">
+                    </div>
+
+                    <form>
+                        <p>Asignar Cocinero</p>
+                        <?php
                             while ($fila = mysqli_fetch_array($resultado2)) {
                             ?>
-                            <input type="radio" id="<?php echo $fila['nombres'];?>" name="usuario_decision" value="<?php echo $fila['id'];?>">
-                            <label for="<?php echo $fila['nombres'];?>"><?php echo $fila['nombres'];?></label><br>
-                            <?php
+                        <input type="radio" id="<?php echo $fila['nombres'];?>" name="usuario_decision"
+                            value="<?php echo $fila['id'];?>">
+                        <label for="<?php echo $fila['nombres'];?>"><?php echo $fila['nombres'];?></label><br>
+                        <?php
                             }
                             ?>
-                        </form>
-                    
+                    </form>
+
                 </div>
 
             </div>
@@ -93,17 +106,19 @@ $resultado2 = $ordClass->getUsuarios();
                 <!-- comienzo de Facturación -->
                 <div id="order-list" class="bg-orange bg-gradient p-1">
                     <div align="right">
-                        <button class="btn btn-success me-md-2" id="btnNuevoCliente" name="btnNuevoCliente" type="button"
-                            data-bs-toggle="modal" data-bs-target="#formNuevoCliente" >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
-                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                        <button class="btn btn-success me-md-2" id="btnNuevoCliente" name="btnNuevoCliente"
+                            type="button" data-bs-toggle="modal" data-bs-target="#formNuevoCliente">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+                                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                <path fill-rule="evenodd"
+                                    d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
                             </svg>
                         </button>
                         <h3 class="fw-bolder text-center fst-italic text-light">ORDENES</h3>
                     </div>
-                    
-                    
+
+
                     <div id="order-items-holder" class="bg-light bg-gradient mb-3">
                         <div id="order-items-header">
                             <div class="d-flex w-100 bg-primary bg-gradient">
@@ -112,7 +127,7 @@ $resultado2 = $ordClass->getUsuarios();
                                 <div class="col-3 text-center text-white fw-bolder m-0 border">Total</div>
                             </div>
                         </div>
-                        <div id="order-items-body"></div>
+                        <div id="order-items-body" class="text-center text-white fw-bolder"></div>
                     </div>
                     <div class="d-flex w-100 mb-2">
                         <h3 class="col-5 mb-0">Total</h3>
@@ -145,21 +160,21 @@ $resultado2 = $ordClass->getUsuarios();
             <input type="hidden" name="menu_id[]" value="">
             <input type="hidden" name="price[]" value="">
             <div class="input-group input-group-sm">
-                <button class="btn btn-indigo btn-xs btn-flat minus-qty" type="button"><i
+                <button class="btn btn-warning btn-xs btn-flat minus-qty" type="button"><i
                         class="fa fa-minus"></i></button>
                 <input type="number" min='1' value='1' name="quantity[]"
                     class="form-control form-control-xs rounded-0 text-center" required readonly>
-                <button class="btn btn-indigo btn-xs btn-flat plus-qty" type="button"><i
-                        class="fa fa-plus"></i></button>
+                <button class="btn btn-warning btn-xs btn-flat plus-qty" type="button"><i class="fa fa-plus"></i>
+                </button>
             </div>
         </div>
         <div class="col-6 font-weight-bolder m-0 border align-middle">
-            <div style="line-height:1em" class="text-sm">
+            <div style="line-height:1em" class="text-sm texte-center">
                 <div class="w-100 d-flex aling-items-center"><a href="javascript:void(0)"
                         class="text-danger text-decoration-none rem-item mr-1"><i class="fa fa-times"></i></a>
-                    <p class="m-0 truncate-1 menu_name">Menu name</p>
+                    <p class="m-0 truncate-1 menu_name text-center text-white">Menu name</p>
                 </div>
-                <div><small class="text-muted menu_price">x 0.00</small></div>
+                <div><small class="text-white menu_price">x 0.00</small></div>
             </div>
         </div>
         <div class="col-3 font-weight-bolder m-0 border align-middle text-right menu_total">0.00</div>
@@ -167,42 +182,42 @@ $resultado2 = $ordClass->getUsuarios();
 </noscript>
 
 <div class="modal fade " id="formNuevoCliente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-                <div class="modal-header">
-                    <h5 class="modal-title" id="formNuevoCliente">Nuevo Cliente</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formNuevoCliente">Nuevo Cliente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 
-                    
-                    </button>
+
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nombre" placeholder="aqui va tu nombre">
+                    <label for="nombre">Nombre</label>
                 </div>
 
-                <div class="modal-body">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="nombre" placeholder="aqui va tu nombre">
-                        <label for="nombre">Nombre</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="nit" placeholder="aqui va el nit">
-                        <label for="nit">Nit</label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="estado" placeholder="Estado">
-                        <label for="estado">Estado</label>
-                    </div>
-
-
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nit" placeholder="aqui va el nit">
+                    <label for="nit">Nit</label>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnAgregarCliente">Agregar Cliente</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="estado" placeholder="Estado">
+                    <label for="estado">Estado</label>
                 </div>
+
 
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnAgregarCliente">Agregar Cliente</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+
+        </div>
     </div>
 </div>
 
@@ -224,7 +239,7 @@ function calc_total() {
         }))
     })
     $('[name="total_amount"]').val(gt).trigger('change')
-    
+
     $('#grand_total').text(parseFloat(gt).toLocaleString('en-US', {
         style: 'decimal',
         minimumFractionDigits: 2,

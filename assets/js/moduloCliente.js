@@ -29,9 +29,9 @@ function loginFallido() {
 $('#btnAgregarCliente').on('click', function () {
 
     var nombre = $('#nombre').val();
-    var nit= $('#nit').val();
+    var nit = $('#nit').val();
     var estado = $('#estado').val();
-   
+
 
     if (nombre == "") {
         Swal.fire({
@@ -74,7 +74,7 @@ $('#btnAgregarCliente').on('click', function () {
 
                 Swal.fire(
                     '!Nuevo Cliente agregado correctamente!',
-                    
+                    '!Enhorabuena!',
                     'success'
                 );
                 cargarContenido('view/Clientes/clientesView.php');
@@ -113,7 +113,7 @@ $('#btnActualizaCliente').on('click', function () {
         })
         return false;
     }
-    if (estado== "") {
+    if (estado == "") {
         Swal.fire({
             icon: 'warning',
             title: '¡Edición Incompleta!',
@@ -165,12 +165,12 @@ function obtenerCliente(id) {
             var nombre = data.nombre;
             var nit = data.nit;
             var estado = data.estado;
-           
+
             $('#id_upd').val(id);
             $('#nombre_upd').val(nombre);
             $('#nit_upd').val(nit);
             $('#estado_upd').val(estado);
-         
+
 
             $('#formActualizaCliente').modal('show');
         }
