@@ -1,8 +1,7 @@
-$('#btnAgregarAlimento').on('click', function () {
+$('#btnAgregarCategoria').on('click', function () {
 
     var nombre = $('#nombre').val();
-    var estado = document.querySelector('input[type=radio][name=estado_decision]:checked');
-    var categoria = document.querySelector('input[type=radio][name=categoria_decision]:checked');
+    var estado = document.querySelector('input[type=radio][name=categoria_decision]:checked');
 
     if (nombre == "") {
         Swal.fire({
@@ -23,22 +22,22 @@ $('#btnAgregarAlimento').on('click', function () {
 
     $.ajax({
         type: 'POST',
-        data: "crear_alimento=1&nombre=" + nombre + "&estado=" + estado.value + "&categoria=" + categoria.value,
-        url: 'controller/Alimentos/alimentosController.php',
+        data: "crear_categoria=1&nombre=" + nombre + "&estado=" + estado.value,
+        url: 'controller/Categorias/categoriasController.php',
         dataType: 'json',
         success: function (data) {
             var resultado = data.resultado;
             if (resultado === 1) {
-                $('#formNuevoAlimento').modal('hide');
+                $('#formNuevoEstado').modal('hide');
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
 
                 Swal.fire(
-                    '!Nuevo alimento agregado correctamente!',
-                    '!Ya se encuentra en el menú!',
+                    '!Nueva Categoría de alimentos agregada correctamente!',
+                    '!Ya puede ser asignado!',
                     'success'
                 );
-                cargarContenido('view/Alimentos/alimentosView.php');
+                cargarContenido('view/Categorias/categoriasView.php');
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -51,12 +50,11 @@ $('#btnAgregarAlimento').on('click', function () {
 
 });
 
-$('#btnActualizarAlimento').on('click', function () {
+$('#btnActualizarCategoria').on('click', function () {
 
-    var id = $('#id_alimento_upd').val();
-    var nombre = $('#nombre_alimento_upd').val();
-    var estado = document.querySelector('input[type=radio][name=estado_decision]:checked');
-    var categoria = document.querySelector('input[type=radio][name=categoria_decision]:checked');
+    var id = $('#id_categoria_upd').val();
+    var nombre = $('#nombre_categoria_upd').val();
+    var estado = document.querySelector('input[type=radio][name=categoria_decision]:checked');
     
 
     if (nombre == "") {
@@ -76,33 +74,25 @@ $('#btnActualizarAlimento').on('click', function () {
         })
         return false;
     }
-    if (categoria == "") {
-        Swal.fire({
-            icon: 'warning',
-            title: '¡Edición Incompleta!',
-            text: '!La categoria es necesario!',
-        })
-        return false;
-    }
 
     $.ajax({
         type: 'POST',
-        data: "actualizar_alimento=1&id=" + id + "&nombre=" + nombre + "&estado=" + estado.value + "&categoria=" + categoria.value,
-        url: 'controller/Alimentos/alimentosController.php',
+        data: "actualizar_categoria=1&id=" + id + "&nombre=" + nombre + "&estado=" + estado.value,
+        url: 'controller/Categorias/categoriasController.php',
         dataType: 'json',
         success: function (data) {
             var resultado = data.resultado;
             if (resultado === 1) {
-                $('#formActualizaAlimento').modal('hide');
+                $('#formActualizaEstado').modal('hide');
                 $('body').removeClass('modal-open');
                 $('.modal-backdrop').remove();
 
                 Swal.fire(
-                    '!Alimento actualizado exitosamente!',
+                    '!Categoria actualizada exitosamente!',
                     '!Recargue la pagina!',
                     'success'
                 );
-                cargarContenido('view/Alimentos/alimentosView.php');
+                cargarContenido('view/Categorias/categoriasView.php');
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -115,27 +105,27 @@ $('#btnActualizarAlimento').on('click', function () {
 
 });
 
-function obtenerAlimento(id) {
+function obtenerCategoria(id) {
 
     $.ajax({
         type: 'POST',
-        data: "obtener_alimento=1&id=" + id,
-        url: 'controller/Alimentos/alimentosController.php',
+        data: "obtener_categoria=1&id=" + id,
+        url: 'controller/Categorias/categoriasController.php',
         dataType: 'json',
         success: function (data) {
             var id = data.id;
             var nombre = data.nombre;
             var estado = data.estado;
 
-            $('#id_alimento_upd').val(id);
-            $('#nombre_alimento_upd').val(nombre);
+            $('#id_categoria_upd').val(id);
+            $('#nombre_categoria_upd').val(nombre);
 
-            $('#formActualizaAlimento').modal('show');
+            $('#formActualizaCategoria').modal('show');
         }
     });
 }
 
-function eliminarAlimento(id) {
+function eliminarCategoria(id) {
 
     Swal.fire({
         title: '¿Estas seguro?',
@@ -150,8 +140,8 @@ function eliminarAlimento(id) {
 
             $.ajax({
                 type: 'POST',
-                data: "eliminar_alimento=1&id=" + id,
-                url: 'controller/Alimentos/alimentosController.php',
+                data: "eliminar_categoria=1&id=" + id,
+                url: 'controller/Categorias/categoriasController.php',
                 dataType: 'json',
 
                 success: function (data) {
@@ -164,7 +154,7 @@ function eliminarAlimento(id) {
                             'Borrado de la base de datos',
                             'success'
                         )
-                        cargarContenido('view/Alimentos/alimentosView.php');
+                        cargarContenido('view/Categorias/categoriasView.php');
                     } else {
                         Swal.fire({
                             icon: 'error',

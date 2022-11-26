@@ -9,8 +9,12 @@ include_once("../../model/functions.php");
 $altClass = new alimentosModel();
 
 $result = array();
+$resultado = array();
 $resultRoles = array();
 $result = $altClass->getAlimentos();
+$resultado = $altClass->getCategorias();
+$resultado2 = $altClass->getCategorias();
+
 
 ?>
 <script src="assets/js/moduloAlimentos.js"></script>
@@ -42,6 +46,7 @@ $result = $altClass->getAlimentos();
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">NOMBRE</th>
+                            <th scope="col">CATEGORIA</th>
             
                             <th scope="col">ESTADO</th>
                             
@@ -56,7 +61,8 @@ $result = $altClass->getAlimentos();
                     ?>
                         <tr>
                             <th><?php echo $fila['id']; ?></th>
-                            <td><?php echo $fila['nombre']; ?></td>
+                            <td><?php echo $fila['nombre_alimento']; ?></td>
+                            <td><?php echo $fila['nombre_categoria']; ?></td>
                             
                             <td><?php echo $fila['estado']; ?></td>
                             
@@ -105,6 +111,20 @@ $result = $altClass->getAlimentos();
 
                 <div class="form-floating mb-3">
                     <form>
+                        <p>Categoria</p>
+                        <?php
+                        while ($fila = mysqli_fetch_array($resultado)) {
+                        ?>
+                        <input type="radio" id="<?php echo $fila['nombre'];?>" name="categoria_decision" value="<?php echo $fila['id'];?>">
+                        <label for="<?php echo $fila['nombre'];?>"><?php echo $fila['nombre'];?></label><br>
+                        <?php
+                        }
+                        ?>
+                    </form>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <form>
                         <p>Estado</p>
                         <input type="radio" id="active" name="estado_decision" value="ACT">
                         <label for="active">Active</label><br>
@@ -142,6 +162,20 @@ $result = $altClass->getAlimentos();
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="nombre_alimento_upd" placeholder="aqui va el nombre del alimento">
                         <label for="nombre_alimento_upd">Nombres</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <form>
+                            <p>Categoria</p>
+                            <?php
+                            while ($fila = mysqli_fetch_array($resultado2)) {
+                            ?>
+                            <input type="radio" id="<?php echo $fila['nombre'];?>" name="categoria_decision" value="<?php echo $fila['id'];?>">
+                            <label for="<?php echo $fila['nombre'];?>"><?php echo $fila['nombre'];?></label><br>
+                            <?php
+                            }
+                            ?>
+                        </form>
                     </div>
 
                     <div class="form-floating mb-3">
