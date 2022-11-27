@@ -217,7 +217,6 @@ $('#btnActualizarUsuario').on('click', function () {
 
                 Swal.fire(
                     '!Usuario actualizado exitosamente!',
-                    '!Recargue la pagina!',
                     'success'
                 );
                 cargarContenido('view/Usuarios/usuariosView.php');

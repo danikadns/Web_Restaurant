@@ -33,13 +33,13 @@ $('#btnActualizarPass').on('click', function () {
                     success: function (data) {
                         var resultado = data.resultado;
                         if (resultado === 1) {
-                            Toast.fire({
+                            Swal.fire({
                                 icon: 'success',
                                 title: 'Contraseña actualizada correctamente'
                             })
                             cargarContenido('home.php');
                         } else {
-                            Toast.fire({
+                            Swal.fire({
                                 icon: 'success',
                                 title: 'No se pudo actualizar la contraseña'
                             })

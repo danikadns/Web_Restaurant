@@ -79,8 +79,10 @@
                 ?>
                 <a href="#" class="nav-item nav-link" onclick="cargarContenido('view/Alimentos/alimentosView.php')"
                     class="nav-item nav-link">
-                    <i class="fa-sharp fa-solid fa-bowl-food"></i> Alimentos
-                </a>
+                    <i class="fa-sharp fa-solid fa-bowl-food"></i> Alimentos</a>
+                <a href="#" class="nav-item nav-link" onclick="cargarContenido('view/Categorias/categoriasView.php')"
+                    class="nav-item nav-link">
+                    <i class="fa-sharp fa-solid fa-bowl-food"></i> Categorías</a>
                 <a href="#" onclick="cargarContenido('view/Clientes/clientesView.php')" class="nav-item nav-link">
                     <i class="fa fa-users me-2"></i>Clientes</a>
 
