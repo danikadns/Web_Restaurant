@@ -30,7 +30,7 @@ obtenerUsuario(<?php echo $_SESSION['user_id']?>);
                         <h4 class="m-t-0 m-b-40 header-title text-center"><b style="font-size: 20px;">
                                 <?php echo $_SESSION['user_nombre']." ".$_SESSION['user_apellido'];
                     ?></b></h4>
-                        <p class="card-text" align="center">Roll del Usuario</p>
+                        <p class="card-text" align="center"><?php echo $_SESSION['role_nombre'] ?></p>
                         <form id="form1" enctype="multipart/form-data" method="post"
                             action="controller/Configuracion/recepcion.php">
                             <label>Imagen
