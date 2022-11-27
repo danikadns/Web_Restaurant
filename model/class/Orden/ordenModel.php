@@ -39,6 +39,35 @@ class ordenModel {
     function getOrdenCocinero(){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
+        $user_id = $_SESSION['user_id'];
+
+        $sql = "SELECT
+                    o.id,
+                    o.observaciones,
+                    o.fecha_creacion,
+                    a.nombre as menu,
+                    e.nombre as estado,
+                    c.nombre as cliente
+                FROM
+                    orden o,
+                    alimentos a,
+                    estado e,
+                    cliente c
+                WHERE
+                    o.alimento_id = a.id
+                    and o.users_id = $user_id
+                    and o.estado_orden_id = e.id 
+                    and o.cliente_id = c.id
+                    and e.id = 2";
+ 
+        $resultado = mysqli_query($conexion, $sql);
+        $conexionClass->desconectar($conexion);
+        return $resultado;
+    }
+
+    function getOrdenAdmin(){
+        $conexionClass = new Tools();
+        $conexion = $conexionClass->conectar();
 
         $sql = "SELECT
                     o.id,
@@ -55,8 +84,35 @@ class ordenModel {
                 WHERE
                     o.alimento_id = a.id
                     and o.estado_orden_id = e.id 
+                    and o.cliente_id = c.id";
+ 
+        $resultado = mysqli_query($conexion, $sql);
+        $conexionClass->desconectar($conexion);
+        return $resultado;
+    }
+
+    function getOrdenCajero(){
+        $conexionClass = new Tools();
+        $conexion = $conexionClass->conectar();
+
+        $sql = "SELECT
+                    o.id,
+                    o.observaciones,
+                    o.fecha_creacion,
+                    a.nombre as menu,
+                    e.nombre as estado,
+                    c.nombre as cliente,
+                    a.precio
+                FROM
+                    orden o,
+                    alimentos a,
+                    estado e,
+                    cliente c
+                WHERE
+                    o.alimento_id = a.id
+                    and o.estado_orden_id = e.id 
                     and o.cliente_id = c.id
-                    and e.id = 2";
+                    and e.id = 3";
  
         $resultado = mysqli_query($conexion, $sql);
         $conexionClass->desconectar($conexion);
@@ -107,6 +163,104 @@ class ordenModel {
                 WHERE
                 id = $id";
         
+        $resultado = mysqli_query($conexion, $sql);
+        if($resultado){
+            $conexionClass->desconectar($conexion);
+            return 1;
+        }else{
+            $conexionClass->desconectar($conexion);
+            return 0;
+        }
+    }
+
+    function actEstadoOrdenCan($id, $user_id){
+        $conexionClass = new Tools();
+        $conexion = $conexionClass->conectar();
+        $sql = "UPDATE
+                    orden
+                SET
+                    estado_orden_id = 4,
+                    usuario_updated_id = $user_id,
+                    fecha_actualizacion = now()
+                WHERE
+                id = $id";
+        
+        $resultado = mysqli_query($conexion, $sql);
+        if($resultado){
+            $conexionClass->desconectar($conexion);
+            return 1;
+        }else{
+            $conexionClass->desconectar($conexion);
+            return 0;
+        }
+    }
+
+    function actEstadoOrdenAnu($id, $user_id){
+        $conexionClass = new Tools();
+        $conexion = $conexionClass->conectar();
+        $sql = "UPDATE
+                    orden
+                SET
+                    estado_orden_id = 5,
+                    usuario_updated_id = $user_id,
+                    fecha_actualizacion = now()
+                WHERE
+                id = $id";
+        
+        $resultado = mysqli_query($conexion, $sql);
+        if($resultado){
+            $conexionClass->desconectar($conexion);
+            return 1;
+        }else{
+            $conexionClass->desconectar($conexion);
+            return 0;
+        }
+    }
+
+    function actEstadoOrdenFin($id, $user_id){
+        $conexionClass = new Tools();
+        $conexion = $conexionClass->conectar();
+        $sql = "UPDATE
+                    orden
+                SET
+                    estado_orden_id = 1,
+                    usuario_updated_id = $user_id,
+                    fecha_actualizacion = now()
+                WHERE
+                id = $id";
+        
+        $resultado = mysqli_query($conexion, $sql);
+        if($resultado){
+            $conexionClass->desconectar($conexion);
+            return 1;
+        }else{
+            $conexionClass->desconectar($conexion);
+            return 0;
+        }
+    }
+
+    function crearPago($orden, $precio, $user_id){
+        $conexionClass = new Tools();
+        $conexion = $conexionClass->conectar();
+        $sql = "INSERT INTO pago
+                    (
+                    orden_id,
+                    monto,
+                    fecha,
+                    usuario_creacion_id,                   
+                    fecha_creacion,                                   
+                    estado
+                    )
+                    VALUES
+                    (
+                    $orden,
+                    $precio,
+                    now(),
+                    $user_id, 
+                    now(),                    
+                    'ACT'
+                    )";        
+
         $resultado = mysqli_query($conexion, $sql);
         if($resultado){
             $conexionClass->desconectar($conexion);

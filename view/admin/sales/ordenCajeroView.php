@@ -9,7 +9,7 @@ include_once("../../../model/functions.php");
 $altClass = new alimentosModel();
 $ordClass = new ordenModel();
 $result = array();
-$result = $altClass->getAlimentos();
+$result = $altClass->getMenu();
 $resultado2 = array();
 $resultado2 = $ordClass->getUsuarios();
 ?>
@@ -145,7 +145,9 @@ $resultado2 = $ordClass->getUsuarios();
                         <h3 class="col-7 mb-0 bg-light bg-gradient rounded-0 text-end" id="change">0.00</h3>
                     </div>
                 </div>
-                <button id="btnGenOrden">Generar Orden</button>
+                <button id="btnGenOrden" class="bg-success bg-gradient">
+                    <div class="text-center text-white fw-bolder m-0 border">GENERAR ORDEN</div>
+                </button>
                 <!-- Fin de Facturación -->
 
             </div>

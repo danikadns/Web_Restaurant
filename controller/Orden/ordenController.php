@@ -12,6 +12,9 @@ $respuesta = array();
 
 
 $ActEstadOrden = (isset($_POST['act_estado_orden'])) ? $_POST['act_estado_orden'] : "0";
+$ActEstadOrdenFin = (isset($_POST['act_estado_orden_fin'])) ? $_POST['act_estado_orden_fin'] : "0";
+$ActEstadOrdenCan = (isset($_POST['act_estado_orden_can'])) ? $_POST['act_estado_orden_can'] : "0";
+$ActEstadOrdenAnu = (isset($_POST['act_estado_orden_anu'])) ? $_POST['act_estado_orden_anu'] : "0";
 $obtenerCliente = (isset($_POST['obtener_cliente'])) ? $_POST['obtener_cliente'] : "0";
 $CrearOrden = (isset($_POST['crear_orden'])) ? $_POST['crear_orden'] : "0";
 
@@ -20,6 +23,36 @@ if ($ActEstadOrden == 1) {
     $id = (isset($_POST['id'])) ? $_POST['id'] : "0";
 
     $result = $ordClass->actEstadoOrden($id, $_SESSION['user_id']);
+
+    $respuesta['resultado'] = $result;
+    echo json_encode($respuesta);
+}
+
+if ($ActEstadOrdenCan == 1) {
+    $id = (isset($_POST['id'])) ? $_POST['id'] : "0";
+
+    $result = $ordClass->actEstadoOrdenCan($id, $_SESSION['user_id']);
+
+    $respuesta['resultado'] = $result;
+    echo json_encode($respuesta);
+}
+
+if ($ActEstadOrdenAnu == 1) {
+    $id = (isset($_POST['id'])) ? $_POST['id'] : "0";
+
+    $result = $ordClass->actEstadoOrdenAnu($id, $_SESSION['user_id']);
+
+    $respuesta['resultado'] = $result;
+    echo json_encode($respuesta);
+}
+
+if ($ActEstadOrdenFin == 1) {
+    $id = (isset($_POST['id'])) ? $_POST['id'] : "0";
+    $precio = (isset($_POST['precio'])) ? $_POST['precio'] : "0";
+    
+
+    $result = $ordClass->actEstadoOrdenFin($id, $_SESSION['user_id']);
+    $result = $ordClass->crearPago($id, $precio, $_SESSION['user_id']);
 
     $respuesta['resultado'] = $result;
     echo json_encode($respuesta);

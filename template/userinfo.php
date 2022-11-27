@@ -46,7 +46,7 @@
     <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
         <a href="#" class="navbar-brand d-flex d-lg-none me-4">
             <h2 class="text-primary mb-0"><img class="rounded-circle" src="assets/img/logos/Login.ico" alt=""
-                        style="width: 50px; height: 50px;"></h2>
+                    style="width: 50px; height: 50px;"></h2>
         </a>
         <a href="#" class="sidebar-toggler flex-shrink-0">
             <i class="fa fa-bars"></i>
@@ -55,8 +55,9 @@
             <input class="form-control bg-dark border-0" type="search" placeholder="Search">
         </form>
         <div class="navbar-nav align-items-center ms-auto">
-           
-            <?php if($_SESSION['user_id'] == 1){
+
+            <?php if($_SESSION['roles_id'] == 1){
+
             ?>
             <!-- Modulo de usuarios y roles -->
             <div class="nav-item dropdown">
@@ -66,15 +67,15 @@
                     <span class="d-none d-lg-inline-flex">Módulo Usuarios</span>
                 </a>
 
-                
+
                 <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                     <a href="#" class="dropdown-item" onclick="cargarContenido('view/Usuarios/usuariosView.php');">
                         <h6 class="fw-normal mb-0">Registro de Actualización</h6>
                         <small>Cree, edite y elimine</small>
                     </a>
-                  
-                 </div>
-                
+
+                </div>
+
             </div>
             <?php
                 }?>

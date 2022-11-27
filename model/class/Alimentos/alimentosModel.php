@@ -5,6 +5,26 @@ class alimentosModel {
     /**
      * Funcion para obtener el listado de usuarios
      */
+
+    function getMenu(){
+        $conexionClass = new Tools();
+        $conexion = $conexionClass->conectar();
+
+        $sql = "SELECT a.id,
+                        a.nombre as nombre_alimento,                                            
+                        a.estado,
+                        c.nombre as nombre_categoria,
+                        a.categorias_id,
+                        a.precio 
+                FROM alimentos a, categorias c
+                WHERE a.categorias_id = c.id
+                and a.estado = 'ACT'";
+ 
+        $resultado = mysqli_query($conexion, $sql);
+        $conexionClass->desconectar($conexion);
+        return $resultado;
+    }
+
     function getAlimentos(){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
