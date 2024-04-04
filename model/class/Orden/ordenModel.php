@@ -6,6 +6,16 @@ class ordenModel {
      * Funcion para obtener el listado de ordenes
      */
 
+    function getIdOrden(){
+        $conexionClass = new Tools();
+        $conexion = $conexionClass->conectar();
+
+        $sql = "SELECT id FROM orden o ORDER BY o.id DESC LIMIT 1";
+        $resultado = mysqli_query($conexion, $sql);
+        $conexionClass->desconectar($conexion);
+        return $resultado;
+    }
+
     function getOrden(){
         $conexionClass = new Tools();
         $conexion = $conexionClass->conectar();
@@ -42,23 +52,27 @@ class ordenModel {
         $user_id = $_SESSION['user_id'];
 
         $sql = "SELECT
-                    o.id,
-                    o.observaciones,
-                    o.fecha_creacion,
-                    a.nombre as menu,
-                    e.nombre as estado,
-                    c.nombre as cliente
-                FROM
-                    orden o,
-                    alimentos a,
-                    estado e,
-                    cliente c
-                WHERE
-                    o.alimento_id = a.id
-                    and o.users_id = $user_id
-                    and o.estado_orden_id = e.id 
-                    and o.cliente_id = c.id
-                    and e.id = 2";
+        o.id,
+        o.observaciones,
+        o.fecha_creacion,
+        a.nombre AS menu,
+        e.nombre AS estado,
+        c.nombre AS cliente,
+        a.precio
+    FROM
+        orden o
+    JOIN
+        pedidos p ON o.id = p.id_orden
+    JOIN
+        alimentos a ON p.id_alimento = a.id
+    JOIN
+        estado e ON o.estado_orden_id = e.id
+    JOIN
+        cliente c ON o.cliente_id = c.id
+    WHERE
+        o.users_id = 7
+        AND e.id = 2
+    order by o.id;";
  
         $resultado = mysqli_query($conexion, $sql);
         $conexionClass->desconectar($conexion);
@@ -70,21 +84,28 @@ class ordenModel {
         $conexion = $conexionClass->conectar();
 
         $sql = "SELECT
-                    o.id,
+                    o.id AS id,
                     o.observaciones,
                     o.fecha_creacion,
-                    a.nombre as menu,
-                    e.nombre as estado,
-                    c.nombre as cliente
+                    e.nombre AS estado,
+                    c.nombre AS cliente,
+                    GROUP_CONCAT(a.nombre separator ', ') as menu
                 FROM
-                    orden o,
-                    alimentos a,
-                    estado e,
-                    cliente c
-                WHERE
-                    o.alimento_id = a.id
-                    and o.estado_orden_id = e.id 
-                    and o.cliente_id = c.id";
+                    orden o
+                JOIN
+                    estado e ON
+                    o.estado_orden_id = e.id
+                JOIN
+                    cliente c ON
+                    o.cliente_id = c.id
+                JOIN
+                    pedidos p ON
+                    o.id = p.id_orden
+                JOIN
+                    alimentos a ON
+                    p.id_alimento = a.id
+                group by
+                    o.id";                
  
         $resultado = mysqli_query($conexion, $sql);
         $conexionClass->desconectar($conexion);
@@ -335,7 +356,7 @@ class ordenModel {
                     fecha_creacion,                                   
                     estado,
                     estado_orden_id,
-                    alimento_id,
+                    
                     users_id,
                     cliente_id
                     )
@@ -346,9 +367,38 @@ class ordenModel {
                     now(),                     
                     'ACT',
                     2,
-                    $alimento,
+                    
                     $usuario,
                     $cliente
+                    )";        
+
+        $resultado = mysqli_query($conexion, $sql);
+        if($resultado){
+            $conexionClass->desconectar($conexion);
+            return 1;
+        }else{
+            $conexionClass->desconectar($conexion);
+            return 0;
+        }
+    }
+
+    function agregarPedido($id_alimento, $id_orden, $cantidad){
+        echo $cantidad;
+        $conexionClass = new Tools();
+        $conexion = $conexionClass->conectar();
+        $sql = "INSERT INTO pedidos
+                    (
+                    id_alimento,
+                    id_orden,                   
+                    cantidad,
+                    Fecha                                                                                                                                       
+                    )
+                    VALUES
+                    (
+                    $id_alimento,
+                    $id_orden,
+                    $cantidad,
+                    now()                                         
                     )";        
 
         $resultado = mysqli_query($conexion, $sql);

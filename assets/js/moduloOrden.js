@@ -259,61 +259,7 @@ function obtenerCliente() {
     });
 }
 
-$('#btnGenOrden').on('click', function () {
-    var cliente = $('#id_cliente').val();
-    var observaciones = $('#observaciones').val();
-    var id_alimento = $('#id_alimento').val();
-    var usuario = document.querySelector('input[type=radio][name=usuario_decision]:checked');
 
-    if (cliente == "") {
-        Swal.fire({
-            icon: 'warning',
-            title: '¡Edición Incompleta!',
-            text: '!El Nombre es requerido!',
-        })
-        return false;
-    }
-    if (id_alimento == "") {
-        Swal.fire({
-            icon: 'warning',
-            title: '¡Edición Incompleta!',
-            text: '!El Nombre es requerido!',
-        })
-        return false;
-    }
-    if (usuario == "") {
-        Swal.fire({
-            icon: 'warning',
-            title: '¡Edición Incompleta!',
-            text: '!El Nombre es requerido!',
-        })
-        return false;
-    }
-
-    $.ajax({
-        type: 'POST',
-        data: "crear_orden=1&cliente=" + cliente + "&alimento=" + id_alimento + "&usuario=" + usuario.value + "&observaciones=" + observaciones,
-        url: 'controller/Orden/ordenController.php',
-        dataType: 'json',
-        success: function (data) {
-            var resultado = data.resultado;
-            if (resultado === 1) {
-                Swal.fire(
-                    '!Nueva Orden agregada correctamente!',
-                    '!Espere por el pedido!',
-                    'success'
-                );
-                cargarContenido('view/admin/sales/ordenCajeroView.php');
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: '!Algo salió mal!',
-                })
-            }
-        }
-    });
-});
 
 
 

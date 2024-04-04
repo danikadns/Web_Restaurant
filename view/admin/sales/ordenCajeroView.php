@@ -168,6 +168,8 @@ $resultado2 = $ordClass->getUsuarios();
         <div class="col-3 text-center font-weight-bolder m-0 border align-middle">
             <input type="hidden" name="menu_id[]" value="">
             <input type="hidden" name="price[]" value="">
+            <input type="hidden" name="total_amount" value="">
+            
             <div class="input-group input-group-sm">
                 <button class="btn btn-warning btn-xs btn-flat minus-qty" type="button"><i
                         class="fa fa-minus"></i></button>
@@ -231,11 +233,84 @@ $resultado2 = $ordClass->getUsuarios();
 </div>
 
 <script>
-function calc_total() {
+var alimentos = [];
+var cantidades = [];
+
+$('#btnGenOrden').on('click', function () {
+    var cliente = $('#id_cliente').val();
+    var observaciones = $('#observaciones').val();
+    
+    
+    var usuario = document.querySelector('input[type=radio][name=usuario_decision]:checked');
+
+    $('.item-btn').each(function() {
+        
+
+        if (alimentos.length === 0) {
+            Swal.fire({
+                icon: 'warning',
+                title: '¡Edición Incompleta!',
+                text: 'Al menos un alimento es requerido',
+            });
+            return false;
+        }
+        console.log("prueba");
+    });
+
+    if (cliente == "") {
+        Swal.fire({
+            icon: 'warning',
+            title: '¡Edición Incompleta!',
+            text: '!El Nombre es requerido!',
+        })
+        return false;
+    }
+    if (id_alimento == "") {
+        Swal.fire({
+            icon: 'warning',
+            title: '¡Edición Incompleta!',
+            text: '!El Nombre es requerido!',
+        })
+        return false;
+    }
+    if (usuario == "") {
+        Swal.fire({
+            icon: 'warning',
+            title: '¡Edición Incompleta!',
+            text: '!El Nombre es requerido!',
+        })
+        return false;
+    }
+
+    $.ajax({
+        type: 'POST',
+        data: "crear_orden=1&cliente=" + cliente + "&alimento=" + id_alimento + "&alimentos="+ JSON.stringify(alimentos)+"&cantidades="+ JSON.stringify(cantidades) + "&usuario=" + usuario.value + "&observaciones=" + observaciones,
+        url: 'controller/Orden/ordenController.php',
+        dataType: 'json',
+        success: function (data) {
+            var resultado = data.resultado;
+            if (resultado === 1) {
+                Swal.fire(
+                    '!Nueva Orden agregada correctamente!',
+                    '!Espere por el pedido!',
+                    'success'
+                );
+                cargarContenido('view/admin/sales/ordenCajeroView.php');
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '!Algo salió mal!',
+                })
+            }
+        }
+    });
+});
+function calc_total(precio) {
     var gt = 0;
     $('#order-items-body .product-item').each(function() {
         var total = 0;
-        var price = $(this).find('input[name="price[]"]').val()
+        var price = precio;
         price = price > 0 ? price : 0;
         var qty = $(this).find('input[name="quantity[]"]').val()
         qty = qty > 0 ? qty : 0;
@@ -289,6 +364,8 @@ $(function() {
         var id = $(this).attr('data-id')
         var price = $(this).attr('data-price')
         var name = $(this).text().trim()
+        //var precio = document.getElementByName("price[]")[0];
+        //precio.value = price;
         var item = $($('noscript#item-clone').html()).clone()
         if ($('#order-items-body .product-item[data-id="' + id + '"]').length > 0) {
             item = $('#order-items-body .product-item[data-id="' + id + '"]')
@@ -314,26 +391,38 @@ $(function() {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         })))
+        
+
+        var qty = item.find('input[name="quantity[]"]').val();
+            console.log("prueba");
+            alimentos.push({
+                id: id,
+                qty: qty             
+            });
+            cantidades.push({
+                qty: qty
+            })
+        
         $('#order-items-body').append(item)
-        calc_total()
+        calc_total(price)
         item.find('.minus-qty').click(function() {
             var qty = item.find('input[name="quantity[]"]').val()
             qty = qty > 0 ? qty : 0;
             qty = qty == 1 ? 1 : parseInt(qty) - 1
             item.find('input[name="quantity[]"]').val(qty)
-            calc_total()
+            calc_total(price)
         })
         item.find('.plus-qty').click(function() {
             var qty = item.find('input[name="quantity[]"]').val()
             qty = qty > 0 ? qty : 0;
             qty = parseInt(qty) + 1
             item.find('input[name="quantity[]"]').val(qty)
-            calc_total()
+            calc_total(price)
         })
         item.find('.rem-item').click(function() {
             if (confirm("¿Deseas eliminar esta comida?") == true) {
                 item.remove()
-                calc_total()
+                calc_total(price)
             }
         })
     })
