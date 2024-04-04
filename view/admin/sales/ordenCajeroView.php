@@ -49,6 +49,21 @@ $resultado2 = $ordClass->getUsuarios();
                             </svg>
                         </button>
                         </div>
+                        <!-- DATOS CLIENTE -->
+                <div class="card-header">
+                     <h4 class="font-weight-bolder text-light">DATOS DEL CLIENTE</h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control text-dark" id="nombre_cliente" placeholder="Nombre del Cliente" readonly>
+                        <label for="nombre_cliente">Nombre del Cliente</label>
+                    </div>
+                    <div class= " form-floating mb-3">
+                        <input type="text" class="form-control text-dark" id="nit" placeholder="NIT del Cliente" readonly>
+                        <label for="nit_cliente">NIT del Cliente</label>
+                    </div>
+                </div>
+                 <!-- DATOS CLIENTE -->
                         
                 <div class="card-header">
                     <h4 class="font-weight-bolder text-light">Alimentos</h4>
