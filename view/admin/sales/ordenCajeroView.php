@@ -49,8 +49,9 @@ $resultado2 = $ordClass->getUsuarios();
                             </svg>
                         </button>
                         </div>
+
                         <!-- DATOS CLIENTE -->
-                <div class="card-header">
+                                        <div class="card-header">
                      <h4 class="font-weight-bolder text-light">DATOS DEL CLIENTE</h4>
                 </div>
                 <div class="card-body p-4">
@@ -64,6 +65,7 @@ $resultado2 = $ordClass->getUsuarios();
                     </div>
                 </div>
                  <!-- DATOS CLIENTE -->
+
                         
                 <div class="card-header">
                     <h4 class="font-weight-bolder text-light">Alimentos</h4>
@@ -254,6 +256,20 @@ var cantidades = [];
 $('#btnGenOrden').on('click', function () {
     var cliente = $('#id_cliente').val();
     var observaciones = $('#observaciones').val();
+
+    $('.product-item').each(function() {
+        var id = $(this).attr('data-id');
+        var qty = parseInt($(this).find('input[name="quantity[]"]').val());
+        
+        // Agrega el producto y la cantidad al array 'alimentos'
+        alimentos.push({
+            id: id,
+            qty: qty             
+        });
+        
+        // Agrega solo la cantidad al array 'cantidades'
+        cantidades.push(qty);
+    });
     
     
     var usuario = document.querySelector('input[type=radio][name=usuario_decision]:checked');
@@ -321,30 +337,30 @@ $('#btnGenOrden').on('click', function () {
         }
     });
 });
-function calc_total(precio) {
+function calc_total() {
     var gt = 0;
     $('#order-items-body .product-item').each(function() {
         var total = 0;
-        var price = precio;
+        var price = $(this).find('input[name="price[]"]').val();
         price = price > 0 ? price : 0;
-        var qty = $(this).find('input[name="quantity[]"]').val()
+        var qty = $(this).find('input[name="quantity[]"]').val();
         qty = qty > 0 ? qty : 0;
-        total = parseFloat(price) * parseFloat(qty)
-        gt += parseFloat(total)
+        total = parseFloat(price) * parseFloat(qty);
+        gt += parseFloat(total);
         $(this).find('.menu_total').text(parseFloat(total).toLocaleString('en-US', {
             style: 'decimal',
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         }))
-    })
-    $('[name="total_amount"]').val(gt).trigger('change')
+    });
+    
+    $('[name="total_amount"]').val(gt).trigger('change');
 
     $('#grand_total').text(parseFloat(gt).toLocaleString('en-US', {
         style: 'decimal',
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
-    }))
-
+    }));
 }
 $(function() {
     $('body').addClass('sidebar-collapse')
@@ -407,17 +423,6 @@ $(function() {
             maximumFractionDigits: 2
         })))
         
-
-        var qty = item.find('input[name="quantity[]"]').val();
-            console.log("prueba");
-            alimentos.push({
-                id: id,
-                qty: qty             
-            });
-            cantidades.push({
-                qty: qty
-            })
-        
         $('#order-items-body').append(item)
         calc_total(price)
         item.find('.minus-qty').click(function() {
@@ -434,12 +439,28 @@ $(function() {
             item.find('input[name="quantity[]"]').val(qty)
             calc_total(price)
         })
+        
+        item.find('input[name="quantity[]"]').change(function() {
+        var qty = parseInt($(this).val());
+        var total = qty * price;
+
+        item.find('.menu_total').text((parseFloat(total).toLocaleString('en-US', {
+            style: 'decimal',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        })))
+
+        // Llama a la función calc_total() para actualizar el total general.
+        calc_total()
+        })
+        
         item.find('.rem-item').click(function() {
             if (confirm("¿Deseas eliminar esta comida?") == true) {
                 item.remove()
                 calc_total(price)
             }
         })
+
     })
     $('input[name="tendered_amount"], input[name="total_amount"]').on('input change', function() {
         var total = $('input[name="total_amount"]').val()

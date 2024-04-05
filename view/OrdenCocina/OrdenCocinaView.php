@@ -12,9 +12,9 @@ $result = array();
 $resultAdm = array();
 $resultCaj = array();
 $resultRoles = array();
-$result = $estClass->getOrdenCocinero();
+$result = $estClass->getOrdenCajero();
 $resultAdm = $estClass->getOrdenAdmin();
-$resultCaj = $estClass->getOrdenCajero();
+$resultCaj = $estClass->getOrdenCocinero();
 
 ?>
 <script src="assets/js/moduloOrden.js"></script>
@@ -24,7 +24,7 @@ $resultCaj = $estClass->getOrdenCajero();
     <div class="container">
 
         <div class="row justify-content-center">
-            <?php if($_SESSION['roles_id'] == 2){
+            <?php if($_SESSION['roles_id'] == 3){
             ?>
             <?php
                 while ($fila = mysqli_fetch_array($resultCaj)) {
@@ -78,7 +78,7 @@ $resultCaj = $estClass->getOrdenCajero();
                 }
                 ?>
             <?php
-            } else if($_SESSION['roles_id'] == 3){
+            } else if($_SESSION['roles_id'] == 2){
                 ?>
             <?php
 // Agrupar los datos por orden_id

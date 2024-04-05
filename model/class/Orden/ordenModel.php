@@ -52,27 +52,30 @@ class ordenModel {
         $user_id = $_SESSION['user_id'];
 
         $sql = "SELECT
-        o.id,
+        o.id AS id,
         o.observaciones,
         o.fecha_creacion,
-        a.nombre AS menu,
         e.nombre AS estado,
         c.nombre AS cliente,
-        a.precio
+        GROUP_CONCAT(a.nombre separator ', ') as menu
     FROM
         orden o
     JOIN
-        pedidos p ON o.id = p.id_orden
+        estado e ON
+        o.estado_orden_id = e.id
     JOIN
-        alimentos a ON p.id_alimento = a.id
+        cliente c ON
+        o.cliente_id = c.id
     JOIN
-        estado e ON o.estado_orden_id = e.id
+        pedidos p ON
+        o.id = p.id_orden
     JOIN
-        cliente c ON o.cliente_id = c.id
-    WHERE
-        o.users_id = 7
-        AND e.id = 2
-    order by o.id;";
+        alimentos a ON
+        p.id_alimento = a.id
+    where o.users_id = $user_id
+    and e.id = 2
+    group by
+        o.id";
  
         $resultado = mysqli_query($conexion, $sql);
         $conexionClass->desconectar($conexion);
@@ -117,23 +120,30 @@ class ordenModel {
         $conexion = $conexionClass->conectar();
 
         $sql = "SELECT
-                    o.id,
-                    o.observaciones,
-                    o.fecha_creacion,
-                    a.nombre as menu,
-                    e.nombre as estado,
-                    c.nombre as cliente,
-                    a.precio
-                FROM
-                    orden o,
-                    alimentos a,
-                    estado e,
-                    cliente c
-                WHERE
-                    o.alimento_id = a.id
-                    and o.estado_orden_id = e.id 
-                    and o.cliente_id = c.id
-                    and e.id = 3";
+        o.id AS id,
+        o.observaciones,
+        o.fecha_creacion,
+        e.nombre AS estado,
+        c.nombre AS cliente,
+        GROUP_CONCAT(a.nombre separator ', ') as menu,
+        sum(precio * p.cantidad) as precio
+    FROM
+        orden o                
+    JOIN
+        estado e ON
+        o.estado_orden_id = e.id
+    JOIN
+        cliente c ON
+        o.cliente_id = c.id
+    JOIN
+        pedidos p ON
+        o.id = p.id_orden
+    JOIN
+        alimentos a ON
+        p.id_alimento = a.id
+    where e.id = 3
+    group by
+        o.id";
  
         $resultado = mysqli_query($conexion, $sql);
         $conexionClass->desconectar($conexion);
