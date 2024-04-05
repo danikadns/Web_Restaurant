@@ -51,8 +51,12 @@ $resultado2 = $ordClass->getUsuarios();
                         </div>
 
                         <!-- DATOS CLIENTE -->
-                                        <div class="card-header">
-                     <h4 class="font-weight-bolder text-light">DATOS DEL CLIENTE</h4>
+<<<<<<< HEAD
+                                        
+=======
+                <div class="card-header">
+                     <h4 class="bg-secondary font-weight-bolder ">DATOS DEL CLIENTE</h4>
+>>>>>>> 7c0719563ce7e489330d5b6d28e92b11bebe85fd
                 </div>
                 <div class="card-body p-4">
                     <div class="form-floating mb-3">
@@ -68,7 +72,7 @@ $resultado2 = $ordClass->getUsuarios();
 
                         
                 <div class="card-header">
-                    <h4 class="font-weight-bolder text-light">Alimentos</h4>
+                    <h4 class=" bg-secondary font-weight-bolder ">Alimentos</h4>
                 </div>
 
                 <div class="card-body p-4">

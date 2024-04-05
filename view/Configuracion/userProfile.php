@@ -70,9 +70,9 @@ mostrarUsuario(<?php echo $_SESSION['user_id']?>);
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped-columns">
+                        <table class=" bg-secondary rounded h-100 p-0 table table-striped-columns">
                             <thead>
-                                <tr>
+                                <tr id="color">
                                     <th scope="col">Descripcion</th>
                                     <th scope="col">Dato</th>
                                     <td scope="col" align="right"><i
@@ -84,29 +84,29 @@ mostrarUsuario(<?php echo $_SESSION['user_id']?>);
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr id="color">
                                     <th scope="row">Nombre de Usuario</th>
                                     <td colspan="2"><?php echo $_SESSION['username'] ?></td>
                                 </tr>
-                                <tr>
+                                <tr id="color">
                                     <th scope="row">Correo electronico</th>
                                     <td colspan="2"><?php echo $_SESSION['email']?></td>
                                 </tr>
-                                <tr>
+                                <tr id="color">
                                     <th scope="row">Nombres</th>
                                     <td colspan="2"><?php echo $_SESSION['user_nombre'];
                     ?></b></td>
                                 </tr>
-                                <tr>
+                                <tr id="color">
                                     <th scope="row">Apellidos</th>
                                     <td colspan="2"><?php echo $_SESSION['user_apellido'];
                     ?></td>
                                 </tr>
-                                <tr>
+                                <tr id="color">
                                     <th scope="row">Numero de Telefono</th>
                                     <td colspan="2"><?php echo $_SESSION['telefono']?></td>
                                 </tr>
-                                <tr>
+                                <tr id="color">
                                     <th scope="row">Red Social</th>
                                     <td colspan="2">
                                         <figure>
